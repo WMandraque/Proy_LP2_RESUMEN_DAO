@@ -4,9 +4,37 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>SOCRATES INTRANET</title>
 </head>
 <body>
+
+<form action="">
+<center>
+<fieldset>
+<legend>Ingresar datos</legend>
+
+<table>
+
+<tr>
+<td><label>Usuario</label></td>
+<td><input type="text" id="txtUsuario" name="txtUsuario" maxlength="4" placeholder="Ingresar usuario" required="requerid"></td>
+</tr>
+
+<tr>
+<td><label>Clave</label></td>
+<td><input type="password" id="txtPassword" name="txtPassword" maxlength="5" placeholder="Ingresar password" required="requerid"></td>
+</tr>
+
+<tr>
+<td><input type="submit" id="btnIngresar" name="btnIngresar" value="Ingresar"></td>
+<td><input type="reset" id="btnLimpiar" name="btnLimpiar" value="Limpiar"></td>
+</tr>
+
+</table>
+
+</fieldset>
+</center>
+</form>
 
 </body>
 </html>
