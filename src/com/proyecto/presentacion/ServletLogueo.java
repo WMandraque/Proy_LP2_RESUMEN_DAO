@@ -2,6 +2,7 @@ package com.proyecto.presentacion;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,6 +33,8 @@ public class ServletLogueo extends HttpServlet {
 
 	private void procesar(HttpServletRequest request, HttpServletResponse response) {
 		
+		
+
 		
 		//Capturando datos
 		String usuario=request.getParameter("txtUsuario");

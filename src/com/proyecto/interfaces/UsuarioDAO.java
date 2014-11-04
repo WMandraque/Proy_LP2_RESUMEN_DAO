@@ -9,5 +9,7 @@ public interface UsuarioDAO {
 	//Se asume que es publico en una interface
 	
 	UsuarioDTO validarLogueo(String usuario, String clave);
+	
+	int insertarUsuario(String usuario, String clave, String nombre, String apellido, String fecha);
 
 }

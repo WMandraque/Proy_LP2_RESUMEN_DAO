@@ -9,15 +9,23 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>logueo</servlet-name>
+    <servlet-class>com.proyecto.presentacion.ServletLogueo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logueo</servlet-name>
+    <url-pattern>/logueo</url-pattern>
+  </servlet-mapping>
   
   <servlet>
-  <servlet-name>logueo</servlet-name>
-  <servlet-class>com.proyecto.presentacion.ServletLogueo</servlet-class>
+  <servlet-name>registrarUsuario</servlet-name>
+    <servlet-class>com.proyecto.presentacion.ServletRegistrarUsuario</servlet-class>
   </servlet>
   
   <servlet-mapping>
-   <servlet-name>logueo</servlet-name>
-   <url-pattern>/logueo</url-pattern>
+    <servlet-name>registrarUsuario</servlet-name>
+    <url-pattern>/registrarUsuario</url-pattern>
   </servlet-mapping>
   
 </web-app>

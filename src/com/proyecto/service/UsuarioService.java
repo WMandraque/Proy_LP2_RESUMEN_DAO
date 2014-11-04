@@ -15,5 +15,12 @@ public class UsuarioService {
 		UsuarioDTO usuarioX= dao.validarLogueo(usuario, clave);
 		return usuarioX;
 	}
+	
+	
+	public int insertarUsuario(String usuario, String clave, String nombre, String apellido, String fecha){
+		
+		int r=dao.insertarUsuario(usuario, clave, nombre, apellido, fecha);
+		return r;
+	}
 
 }

@@ -5,13 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SOCRATES INTRANET</title>
+<link rel="stylesheet" href="css/estilos.css" type="text/css"> <!-- instanciamos el css -->
 </head>
 <body>
 
-	<form action="logueo">
+	<form action="logueo" method="post">
 		<center>
 			<fieldset>
-				<legend>Ingresar datos</legend>
+				<legend><label class="titulos">Ingresar datos</label> </legend>
 
 				<table>
 
@@ -29,9 +30,9 @@
 					</tr>
 
 					<tr>
-						<td><input type="submit" id="btnIngresar" name="btnIngresar"
+						<td><input type="submit" class="button" id="btnIngresar" name="btnIngresar"
 							value="Ingresar"></td>
-						<td><input type="reset" id="btnLimpiar" name="btnLimpiar"
+						<td><input type="reset" class="button" id="btnLimpiar" name="btnLimpiar"
 							value="Limpiar"></td>
 					</tr>
 
@@ -40,9 +41,11 @@
 			</fieldset>
 			
 			<%
-			  String mensaje=(String)request.getAttribute("mensaje");
+			String mensaje=(String)request.getAttribute("mensaje");
 			if(mensaje!=null){
-				out.print(mensaje);
+			%>
+			<label class="letras"><%=mensaje %></label>
+			<%	
 			}
 			%>
 		</center>
