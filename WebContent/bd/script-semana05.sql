@@ -39,16 +39,13 @@ DELIMiTER  ;
 -- CALL usp_buscausuario('U001','10001');
 
 -- Procedure para ingresar usuarios
-DROP procedure IF EXISTS usp_insertarUsuarios;
+DROP procedure IF EXISTS usp_insertarUsuario;
 DELIMiTER $$
-create procedure usp_insertarUsuarios(usr char(4), pass varchar(5), nom varchar(70), ape varchar(70), fecha date )
+create procedure usp_insertarUsuario(usr char(4), pass varchar(5), nom varchar(70), ape varchar(70), fecha date )
 begin
       insert into tb_usuario values (usr, pass, nom, ape, fecha);
 end$$
 DELIMiTER ;
-
-
-call usp_insertarUsuarios('u009', 'xxx', 'luis', 'lapa', '2014-12-12');
 
 
 -- Procedure para actualizar datos de los usuarios
