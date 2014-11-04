@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,33 +8,45 @@
 </head>
 <body>
 
-<form action="">
-<center>
-<fieldset>
-<legend>Ingresar datos</legend>
+	<form action="logueo">
+		<center>
+			<fieldset>
+				<legend>Ingresar datos</legend>
 
-<table>
+				<table>
 
-<tr>
-<td><label>Usuario</label></td>
-<td><input type="text" id="txtUsuario" name="txtUsuario" maxlength="4" placeholder="Ingresar usuario" required="requerid"></td>
-</tr>
+					<tr>
+						<td><label>Usuario</label></td>
+						<td><input type="text" id="txtUsuario" name="txtUsuario"
+							maxlength="4" placeholder="Ingresar usuario" required="requerid"></td>
+					</tr>
 
-<tr>
-<td><label>Clave</label></td>
-<td><input type="password" id="txtPassword" name="txtPassword" maxlength="5" placeholder="Ingresar password" required="requerid"></td>
-</tr>
+					<tr>
+						<td><label>Clave</label></td>
+						<td><input type="password" id="txtPassword"
+							name="txtPassword" maxlength="5" placeholder="Ingresar password"
+							required="requerid"></td>
+					</tr>
 
-<tr>
-<td><input type="submit" id="btnIngresar" name="btnIngresar" value="Ingresar"></td>
-<td><input type="reset" id="btnLimpiar" name="btnLimpiar" value="Limpiar"></td>
-</tr>
+					<tr>
+						<td><input type="submit" id="btnIngresar" name="btnIngresar"
+							value="Ingresar"></td>
+						<td><input type="reset" id="btnLimpiar" name="btnLimpiar"
+							value="Limpiar"></td>
+					</tr>
 
-</table>
+				</table>
 
-</fieldset>
-</center>
-</form>
+			</fieldset>
+			
+			<%
+			  String mensaje=(String)request.getAttribute("mensaje");
+			if(mensaje!=null){
+				out.print(mensaje);
+			}
+			%>
+		</center>
+	</form>
 
 </body>
 </html>

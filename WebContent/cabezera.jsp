@@ -8,5 +8,9 @@
 </head>
 <body bgcolor="skyblue">
 
+<hr>
+<center><label>SOCRATE INTRANET</label> </center>
+<hr>
+
 </body>
 </html>

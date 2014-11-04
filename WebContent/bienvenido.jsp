@@ -1,4 +1,4 @@
-<frameset rows="200,*">
+<frameset rows="200,*" border="0">
 
 <frame name="cabezera" src="cabezera.jsp">
 
