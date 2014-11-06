@@ -1,4 +1,4 @@
-package com.proyecto.presentacion;
+package com.proyecto.servlets;
 
 import java.io.IOException;
 
@@ -53,7 +53,7 @@ public class ServletRegistrarUsuario extends HttpServlet {
 		if (r>0) {
 			
 			request.setAttribute("mensaje", " Nuevo usuario agregado: "+usuario);
-			rd=request.getRequestDispatcher("listadoUsuario.jsp");
+			rd=request.getRequestDispatcher("listadoUsuarios");
 			rd.forward(request, response);
 		}else{
 			

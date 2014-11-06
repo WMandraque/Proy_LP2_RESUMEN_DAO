@@ -22,7 +22,7 @@ List<UsuarioDTO> listadoUsuario=(List<UsuarioDTO>)request.getAttribute("listadoU
 <fieldset>
 <legend>Listado de Usuarios</legend>
 
-<table cellpadding="2" cellspacing="5" border="2">
+<table cellpadding="2" cellspacing="2" border="2">
 <tr bgcolor="yellow" >
 <td><label>Usuario</label></td>
 <td><label>Clave</label></td>

@@ -2,7 +2,7 @@ package com.proyecto.interfaces;
 
 import java.util.List;
 
-import com.proyecto.beans.UsuarioDTO;
+import com.proyecto.beans.PersonaDTO;
 
 
 public interface UsuarioDAO {
@@ -14,9 +14,9 @@ public interface UsuarioDAO {
 	int insertarUsuario(String usuario, String clave, String nombre, String apellido, String fecha);
 	int actualizarUsuario(String usuario, String clave, String nombre, String apellido);
 	int eliminarUsuario(String usuario);
-	UsuarioDTO validarLogueo(String usuario, String clave);
+	PersonaDTO validarLogueo(String usuario, String clave);
 	
-	List<UsuarioDTO> listadoUsuarios();
+	List<PersonaDTO> listadoUsuarios();
 	
 	
 

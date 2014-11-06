@@ -1,6 +1,7 @@
-package com.proyecto.presentacion;
+package com.proyecto.servlets;
 
 import java.io.IOException;
+
 
 
 import javax.servlet.RequestDispatcher;
@@ -9,8 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.proyecto.beans.UsuarioDTO;
+import com.proyecto.beans.PersonaDTO;
 import com.proyecto.service.UsuarioService;
 
 /**
@@ -39,8 +41,7 @@ public class ServletLogueo extends HttpServlet {
 		//Capturando datos
 		String usuario=request.getParameter("txtUsuario");
 		String clave=request.getParameter("txtPassword");
-		
-		
+
 		//Llamando al servicio
 		UsuarioService servicioUsuario=new UsuarioService();
 		RequestDispatcher rd=null;
@@ -48,11 +49,10 @@ public class ServletLogueo extends HttpServlet {
 		try{
 			
 			
-			UsuarioDTO usuarioX=servicioUsuario.validarLogueo(usuario, clave);
+			PersonaDTO usuarioX=servicioUsuario.validarLogueo(usuario, clave);
 			
 			if (usuarioX!=null) {
-				
-				
+
 				rd=request.getRequestDispatcher("bienvenido.jsp");
 				rd.forward(request, response);
 				

@@ -1,4 +1,4 @@
-package com.proyecto.presentacion;
+package com.proyecto.servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.proyecto.beans.UsuarioDTO;
+import com.proyecto.beans.PersonaDTO;
 import com.proyecto.service.UsuarioService;
 
 /**
@@ -35,7 +35,7 @@ public class ServletListadoUsuario extends HttpServlet {
 			HttpServletResponse response) {
 		
 		UsuarioService servicioUsuario=new UsuarioService();
-		List<UsuarioDTO> listadoUsuario=servicioUsuario.listarUsuario();
+		List<PersonaDTO> listadoUsuario=servicioUsuario.listarUsuario();
 		RequestDispatcher rd=null;
 		try {
 			

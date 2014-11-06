@@ -12,6 +12,7 @@ import java.util.List;
 
 import utils.MySQLConexion;
 
+import com.proyecto.beans.PersonaDTO;
 import com.proyecto.beans.UsuarioDTO;
 import com.proyecto.interfaces.UsuarioDAO;
 
@@ -20,10 +21,10 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	Connection con=null;
 
 	@Override
-	public UsuarioDTO validarLogueo(String usuario, String clave) {
+	public PersonaDTO validarLogueo(String usuario, String clave) {
 		
 		CallableStatement cst=null;
-		UsuarioDTO usuarioX=null;
+		PersonaDTO usuarioX=null;
 		
 		try {
 			con=MySQLConexion.getConexion();
@@ -130,10 +131,10 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	}
 
 	@Override
-	public List<UsuarioDTO> listadoUsuarios() {
+	public List<PersonaDTO> listadoUsuarios() {
 		
 		PreparedStatement pst=null;
-		List<UsuarioDTO> listadoUsuario=new ArrayList<UsuarioDTO>();
+		List<PersonaDTO> listadoUsuario=new ArrayList<PersonaDTO>();
 		
 		try {
 			
