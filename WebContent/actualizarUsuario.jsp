@@ -8,5 +8,14 @@
 </head>
 <body>
 
+<form action="">
+<center>
+<fieldset>
+<legend> Actualizar usuario</legend>
+
+</fieldset>
+</center>
+</form>
+
 </body>
 </html>

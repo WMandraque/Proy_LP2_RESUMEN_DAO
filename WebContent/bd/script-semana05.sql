@@ -1,9 +1,14 @@
 DROP DATABASE IF EXISTS base;
+
 -- creamos la bd
 CREATE DATABASE base;
+
+
 -- activamos la bd
 USE base;
--- creamos la bd
+
+
+-- creamos la tabla
 CREATE TABLE tb_usuario(
 usuario char(4) NOT NULL,
 clave char(5),
@@ -11,8 +16,11 @@ nombre varchar(15),
 apellido varchar(15),
 facceso date
 );
+
 -- creamos la pk
 ALTER TABLE tb_usuario ADD PRIMARY KEY(usuario);
+
+
 -- inserts
 INSERT INTO tb_usuario VALUES('U001', '10001', 'Juan', 'Perez','2014/10/01');
 INSERT INTO tb_usuario VALUES('U002', '10003', 'Jose', 'Atuncar','2014/10/02');
@@ -25,7 +33,7 @@ INSERT INTO tb_usuario VALUES('U004', '10005', 'Rosa', 'centeno','2014/10/04');
 SELECT* FROM tb_usuario;
 
 
--- ejemplo de procedimiento almancenadode consulta
+-- ejemplo de procedimiento almancenado de consulta
 
 DROP procedure IF EXISTS usp_buscausuario;
 DELIMiTER $$

@@ -17,15 +17,23 @@
     <servlet-name>logueo</servlet-name>
     <url-pattern>/logueo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  <servlet-name>registrarUsuario</servlet-name>
+    <servlet-name>registrarUsuario</servlet-name>
     <servlet-class>com.proyecto.presentacion.ServletRegistrarUsuario</servlet-class>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>registrarUsuario</servlet-name>
     <url-pattern>/registrarUsuario</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>listadoUsuarios</servlet-name>
+  <servlet-class>com.proyecto.presentacion.ServletListadoUsuario</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>listadoUsuarios</servlet-name>
+  <url-pattern>/listadoUsuarios</url-pattern>
   </servlet-mapping>
   
 </web-app>

@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import utils.MySQLConexion;
 
@@ -88,6 +90,75 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			
 		}
 		return r;
+	}
+
+	@Override
+	public int actualizarUsuario(String usuario, String clave, String nombre, String apellido) {
+		
+		CallableStatement  cst=null;
+		int r=0;
+		
+		try {
+			
+			con=MySQLConexion.getConexion();
+			String sql="{Call usp_modificarUsuarios(?, ?, ?, ?)}";
+			cst=con.prepareCall(sql);
+			cst.setString(1, usuario);
+			cst.setString(2, clave);
+			cst.setString(3, nombre);
+			cst.setString(4, apellido);
+			
+			r=cst.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("Error al actualizar usuario: "+e);
+		}finally{
+			try{
+				if(con!=null){con.close();}
+				if(cst!=null){cst.close();}
+			}catch(Exception e){
+				System.out.println("Error en las conexiones");
+			}
+		}
+		return r;
+	}
+
+	@Override
+	public int eliminarUsuario(String usuario) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<UsuarioDTO> listadoUsuarios() {
+		
+		PreparedStatement pst=null;
+		List<UsuarioDTO> listadoUsuario=new ArrayList<UsuarioDTO>();
+		
+		try {
+			
+			con=MySQLConexion.getConexion();
+			pst=con.prepareStatement("select*from tb_usuario");
+			
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next()){
+				
+				listadoUsuario.add(new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5)));
+			}
+		} catch (Exception e) {
+			System.out.println("Error al listar usuarios: "+e);
+		}finally{
+			try{
+				if(con!=null){con.close();}
+				if(pst!=null){pst.close();}
+			}catch(Exception e){
+				System.out.println("Error en las conexiones: "+e);
+			}
+		}
+		
+		
+		return listadoUsuario;
 	}
 
 }
