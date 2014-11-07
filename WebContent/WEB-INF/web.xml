@@ -34,5 +34,14 @@
     <url-pattern>/listadoUsuarios</url-pattern>
   </servlet-mapping>
   
-
+  <servlet>
+  <servlet-name>actualizarUsuario</servlet-name>
+  <servlet-class>com.proyecto.servlets.SvActualizarUsuario</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>actualizarUsuario</servlet-name>
+  <url-pattern>/actualizarUsuario</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
