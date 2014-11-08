@@ -12,11 +12,15 @@ public class UsuarioService {
 	
 	
 	
-	
+	//Se intancia DAOFacotry pero solo invocando su metodo para asignar la bd q usaremos
+	//Factory nos devolvera una clase hija del DAOFactory
 	DAOFactory factory=DAOFactory.obtenerDAOFactory(1);
-	
+
+	//El metodo de la clase hija nos devolvera una interfaz
 	UsuarioDAO dao=factory.getUsuarioDAO();
 	
+	//Estos son los metodos que van aser publicos y va a ser intermediaria entre la capa presentacion y 
+	//la capa de datos
 	public PersonaDTO validarLogueo(String usuario, String clave){
 		
 		PersonaDTO usuarioX= dao.validarLogueo(usuario, clave);
@@ -37,6 +41,10 @@ public class UsuarioService {
 		 return r;
 	}
 	
+	public int eliminarUsuario(String usuario){
+		int r=dao.eliminarUsuario(usuario);
+		return r;
+	}
 	
 	public List<PersonaDTO> listarUsuario(){
 		

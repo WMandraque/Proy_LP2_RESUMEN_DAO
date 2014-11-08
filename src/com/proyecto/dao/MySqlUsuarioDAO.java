@@ -126,8 +126,27 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 
 	@Override
 	public int eliminarUsuario(String usuario) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pst=null;
+		int r=0;
+		 try {
+			 con=MySQLConexion.getConexion();
+			 String sql="delete from tb_usuario where usuario=?";
+			 pst=con.prepareStatement(sql);
+			 pst.setString(1, usuario);
+			 
+			 r=pst.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("Error al eliminar usuario: "+e);
+		}finally{
+			try {
+				if(con!=null){con.close();}
+				if(pst!=null){pst.close();}
+			} catch (Exception e) {
+				System.out.println("Error en cerrar conexion: "+e);
+			}
+		}
+		return r;
 	}
 
 	@Override

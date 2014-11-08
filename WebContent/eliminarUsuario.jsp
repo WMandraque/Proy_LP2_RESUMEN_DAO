@@ -10,12 +10,24 @@
 </head>
 <body>
 
-<form action="">
+<form action="eliminarUsuario">
 <center>
 <fieldset>
 
 <legend>Eliminar usuarios</legend>
 
+<table>
+
+<tr>
+<td><label>Usuario</label></td>
+<td><input type="text" name="txtUsuario" id="txtUsuario" maxlength="4" placeholder="Ingresar usuario" required="requerid"></td>
+</tr>
+
+<tr>
+<td><input type="submit" name="btnActualizar" id="btnActualizar" value="Actualizar"></td>
+<td><input type="reset" name="btnLimpiar" id="btnLimpiar" value="Limpiar"></td>
+</tr>
+</table>
 
 
 </fieldset>
