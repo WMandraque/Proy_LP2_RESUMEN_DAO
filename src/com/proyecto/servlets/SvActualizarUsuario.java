@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.proyecto.beans.UsuarioDTO;
 import com.proyecto.service.UsuarioService;
 
 /**
@@ -31,18 +32,28 @@ public class SvActualizarUsuario extends HttpServlet {
 
 	private void procesar(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		
+		//Capturando datos
+		
+		String usuario=request.getParameter("txtUsuario");
+		String clave=request.getParameter("txtPassword");
+		String nombre=request.getParameter("txtNombre");
+		String apellido=request.getParameter("txtApellido");
+	
 		UsuarioService servicioUsaurio=new UsuarioService();
+		int r=servicioUsaurio.actualizarUsuario(usuario, clave, nombre, apellido);
+		RequestDispatcher rd=null;
+		try{
+			if(r>0){
+				rd=request.getRequestDispatcher("listadoUsuarios");
+				rd.forward(request, response);	
+			}else{
+				request.setAttribute("mensaje", "Error al actualizar");
+				rd=request.getRequestDispatcher("actualizarUsuario.jsp");
+				rd.forward(request, response);	
+			}
 		
-		int r=servicioUsaurio.actualizarUsuario(request.getParameter("txtUsuario"), request.getParameter("txtPassword"), request.getParameter("txtNombre"), request.getParameter("txtApellido"));
-		RequestDispatcher rd;
-		
-		if(r>0){
-			
-			rd=request.getRequestDispatcher("listadoUsuarios");
-			rd.forward(request, response);	
-		}else{
-			
-			
+		}catch(Exception e){
+			System.out.println("Error con los dispatcher: "+e);
 		}
 
 		

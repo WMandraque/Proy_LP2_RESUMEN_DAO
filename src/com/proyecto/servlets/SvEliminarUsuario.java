@@ -33,18 +33,24 @@ public class SvEliminarUsuario extends HttpServlet {
 
 	private void procesar(HttpServletRequest request, HttpServletResponse response) {
 		
+		try {
+		
 		UsuarioService servicioUsuario=new UsuarioService();
 		int r=servicioUsuario.eliminarUsuario(request.getParameter("txtUsuario"));
-		RequestDispatcher rd=null;
-			
-			
-		try {
-			
-			rd=request.getRequestDispatcher("listadoUsuarios");
-			rd.forward(request, response);
+		RequestDispatcher rd;
+		
+		
+			if(r==1){	
+				rd=request.getRequestDispatcher("listadoUsuarios");
+				rd.forward(request, response);	
+				
+			}else{
+				rd=request.getRequestDispatcher("eliminarUsuario");
+				rd.forward(request, response);	
+			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Error con los dispacther: "+e);
 		}
 	}
 

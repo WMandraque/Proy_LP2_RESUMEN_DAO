@@ -21,10 +21,10 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	Connection con=null;
 
 	@Override
-	public PersonaDTO validarLogueo(String usuario, String clave) {
+	public UsuarioDTO validarLogueo(String usuario, String clave) {
 		
 		CallableStatement cst=null;
-		PersonaDTO usuarioX=null;
+		UsuarioDTO usuarioX=null;
 		
 		try {
 			con=MySQLConexion.getConexion();
@@ -81,7 +81,6 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		}finally{
 
 			try {
-				
 				if (con!=null) {con.close();}
 				if (cst!=null) {cst.close();}
 				
@@ -150,10 +149,10 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	}
 
 	@Override
-	public List<PersonaDTO> listadoUsuarios() {
+	public List<UsuarioDTO> listadoUsuarios() {
 		
 		PreparedStatement pst=null;
-		List<PersonaDTO> listadoUsuario=new ArrayList<PersonaDTO>();
+		List<UsuarioDTO> listadoUsuario=new ArrayList<UsuarioDTO>();
 		
 		try {
 			
@@ -179,6 +178,37 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		
 		
 		return listadoUsuario;
+	}
+
+	@Override
+	public UsuarioDTO buscarUsuario(String usuario) {
+		
+		PreparedStatement pst=null;
+		UsuarioDTO usuarioX=null;
+		try {
+			
+			con=MySQLConexion.getConexion();
+			String sql="select*From tb_usuario where usuario=?";
+			pst=con.prepareStatement(sql);
+			pst.setString(1, usuario);
+			
+			ResultSet rs=pst.executeQuery();
+			if(rs.next()){
+				
+		      usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5));
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Error al buscar usuario: "+e);
+		}finally{
+			try{
+				if(con!=null){con.close();}
+				if(pst!=null){pst.close();}
+			}catch(Exception e){
+				System.out.println("Error en las conexiones: "+e);
+			}
+		}
+		return usuarioX;
 	}
 
 }

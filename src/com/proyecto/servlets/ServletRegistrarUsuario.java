@@ -47,11 +47,7 @@ public class ServletRegistrarUsuario extends HttpServlet {
 		RequestDispatcher rd=null;
 		
 		int r=servicioUsuario.insertarUsuario(usuario, clave, nombre, apellido, fecha);
-		
-		
-		
 		if (r>0) {
-			
 			request.setAttribute("mensaje", " Nuevo usuario agregado: "+usuario);
 			rd=request.getRequestDispatcher("listadoUsuarios");
 			rd.forward(request, response);

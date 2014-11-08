@@ -3,6 +3,7 @@ package com.proyecto.service;
 import java.util.List;
 
 import com.proyecto.beans.PersonaDTO;
+import com.proyecto.beans.UsuarioDTO;
 import com.proyecto.dao.DAOFactory;
 import com.proyecto.interfaces.UsuarioDAO;
 
@@ -21,9 +22,9 @@ public class UsuarioService {
 	
 	//Estos son los metodos que van aser publicos y va a ser intermediaria entre la capa presentacion y 
 	//la capa de datos
-	public PersonaDTO validarLogueo(String usuario, String clave){
+	public UsuarioDTO validarLogueo(String usuario, String clave){
 		
-		PersonaDTO usuarioX= dao.validarLogueo(usuario, clave);
+		UsuarioDTO  usuarioX= dao.validarLogueo(usuario, clave);
 		return usuarioX;
 	}
 	
@@ -46,11 +47,17 @@ public class UsuarioService {
 		return r;
 	}
 	
-	public List<PersonaDTO> listarUsuario(){
+	public List<UsuarioDTO> listarUsuario(){
 		
-		List<PersonaDTO> listado=dao.listadoUsuarios();
+		List<UsuarioDTO> listado=dao.listadoUsuarios();
 		
 		return listado;
+	}
+	
+	public UsuarioDTO buscarUsuario(String usuario){
+		
+		UsuarioDTO usuarioX=dao.buscarUsuario(usuario);
+		return usuarioX;
 	}
 
 }

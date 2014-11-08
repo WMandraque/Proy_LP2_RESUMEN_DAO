@@ -3,6 +3,7 @@ package com.proyecto.interfaces;
 import java.util.List;
 
 import com.proyecto.beans.PersonaDTO;
+import com.proyecto.beans.UsuarioDTO;
 
 
 public interface UsuarioDAO {
@@ -14,9 +15,10 @@ public interface UsuarioDAO {
 	int insertarUsuario(String usuario, String clave, String nombre, String apellido, String fecha);
 	int actualizarUsuario(String usuario, String clave, String nombre, String apellido);
 	int eliminarUsuario(String usuario);
-	PersonaDTO validarLogueo(String usuario, String clave);
+	UsuarioDTO validarLogueo(String usuario, String clave);
+	UsuarioDTO buscarUsuario(String usuario);
 	
-	List<PersonaDTO> listadoUsuarios();
+	List<UsuarioDTO> listadoUsuarios();
 	
 	
 
