@@ -17,8 +17,19 @@ apellido varchar(15),
 facceso date
 );
 
+CREATE TABLE tb_ventas(
+numvta   int(8) AUTO_INCREMENT NOT NULL primary KEY,
+facceso date  null,
+vendedor char(4),
+monto 	 decimal(8,2)
+);
+
 -- creamos la pk
-ALTER TABLE tb_usuario ADD PRIMARY KEY(usuario);
+ALTER TABLE tb_usuario ADD PRIMARY KEY (usuario);
+-- creamos la fk
+ALTER TABLE tb_ventas ADD foreign key (vendedor) 
+	references tb_usuario(usuario);
+	
 
 
 -- inserts
@@ -28,9 +39,11 @@ INSERT INTO tb_usuario VALUES('U003', '10004', 'Abel', 'paraguay','2014/10/03');
 INSERT INTO tb_usuario VALUES('U004', '10005', 'Rosa', 'centeno','2014/10/04');
 
 
+INSERT INTO tb_ventas VALUES (01,curdate(),'U002',123.20);
 
 -- consultas
-SELECT* FROM tb_usuario;
+SELECT * FROM tb_usuario;
+SELECT * FROM tb_ventas;
 
 
 -- ejemplo de procedimiento almancenado de consulta
