@@ -16,6 +16,7 @@ import com.proyecto.beans.PersonaDTO;
 import com.proyecto.beans.UsuarioDTO;
 import com.proyecto.interfaces.UsuarioDAO;
 
+//CAPA DE DATOS
 public class MySqlUsuarioDAO implements UsuarioDAO {
 	
 	Connection con=null;

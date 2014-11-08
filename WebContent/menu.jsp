@@ -26,7 +26,7 @@
 
 <dl>
 <dt>Salir de esta pagina</dt>
-<li><a href="logout" target="_top">Cerrar sesion</a></li>
+<li><a href="index.jsp" target="_top">Cerrar sesion</a></li>
 </dl>
 </body>
 </html>
