@@ -39,13 +39,13 @@ public class SvEliminarUsuario extends HttpServlet {
 		int r=servicioUsuario.eliminarUsuario(request.getParameter("txtUsuario"));
 		RequestDispatcher rd;
 		
-		
-			if(r==1){	
+			if(r>0){	
 				rd=request.getRequestDispatcher("listadoUsuarios");
 				rd.forward(request, response);	
 				
 			}else{
-				rd=request.getRequestDispatcher("eliminarUsuario");
+				request.setAttribute("mensaje", "Error al eliminar usuario");
+				rd=request.getRequestDispatcher("eliminarUsuario.jsp");
 				rd.forward(request, response);	
 			}
 			
