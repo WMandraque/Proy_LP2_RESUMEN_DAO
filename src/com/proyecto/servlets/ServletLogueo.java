@@ -52,6 +52,16 @@ public class ServletLogueo extends HttpServlet {
 			PersonaDTO usuarioX=servicioUsuario.validarLogueo(usuario, clave);
 			
 			if (usuarioX!=null) {
+				
+				
+				//Capturamos la sesion actual
+				HttpSession miSesion=request.getSession();
+				
+				System.out.println("Sesion iniciada: "+miSesion.getId());
+				miSesion.setAttribute("datos", usuarioX.getNombre() +" "+usuarioX.getApellido() );
+				//Para saber la session actual
+				//A nivel de request
+				request.setAttribute("datos", usuarioX.getNombre());
 
 				rd=request.getRequestDispatcher("bienvenido.jsp");
 				rd.forward(request, response);

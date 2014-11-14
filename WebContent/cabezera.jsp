@@ -16,6 +16,19 @@
 <center><label>SOCRATE INTRANET</label> </center>
 <hr>
 
+<%
+		String datos = (String) request.getAttribute("datos");
+		if (datos != null)
+			out.println("Bienvenido: <b>" + datos + "</b>");
+%>
+
+<%
+        HttpSession miSession=request.getSession();
+		String datosSession = (String) miSession.getAttribute("datos");
+		if (datosSession != null)
+			out.println("Bienvenido: <b>" + datosSession + "</b>");
+%>
+
 
 </body>
 </html>

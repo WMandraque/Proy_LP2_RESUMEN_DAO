@@ -37,12 +37,10 @@
     <servlet-name>eliminarUsuario</servlet-name>
     <servlet-class>com.proyecto.servlets.SvEliminarUsuario</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  <servlet-name>eliminarUsuario</servlet-name>
-  <url-pattern>/eliminarUsuario</url-pattern>
+    <servlet-name>eliminarUsuario</servlet-name>
+    <url-pattern>/eliminarUsuario</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>actualizarUsuario</servlet-name>
     <servlet-class>com.proyecto.servlets.SvActualizarUsuario</servlet-class>
@@ -51,4 +49,14 @@
     <servlet-name>actualizarUsuario</servlet-name>
     <url-pattern>/actualizarUsuario</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>cerrando</servlet-name>
+  <servlet-class>com.proyecto.servlets.SvCerrarCesion</servlet-class>
+    </servlet>
+    
+   <servlet-mapping>
+   <servlet-name>cerrando</servlet-name>
+   <url-pattern>/cerrando</url-pattern>
+    </servlet-mapping>
 </web-app>

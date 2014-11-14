@@ -7,7 +7,7 @@ public class MySqlDAOFactory extends DAOFactory {
 
 	@Override
 	public UsuarioDAO getUsuarioDAO() {
-		return new MySqlUsuarioDAO();
+		return new MySqlUsuarioDAO();  //Esta es la q tendra todos los mantenimientos usando MySQL
 	}
 
 }

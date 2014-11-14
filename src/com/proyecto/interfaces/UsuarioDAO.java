@@ -10,7 +10,13 @@ public interface UsuarioDAO {
 	
 	
 	//Implementamos los metodos para que la clase que la implemente deba desarrollarla
-	//Se asume que es publico en una interface
+	
+	//Define los metodos a usar para la clase UsuarioDTO
+	//Se asume que es publico en una interface.
+	
+	//Lista de los metodos a usar para la clase UsuarioDTO(solo listar)
+	
+	//public int registrarUsuario(UsuarioDTO usuario);
 	
 	int insertarUsuario(String usuario, String clave, String nombre, String apellido, String fecha);
 	int actualizarUsuario(String usuario, String clave, String nombre, String apellido);

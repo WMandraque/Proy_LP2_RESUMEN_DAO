@@ -17,7 +17,7 @@ public class UsuarioService {
 	
 	//Se intancia DAOFacotry pero solo invocando su metodo para asignar la bd q usaremos
 	//Factory nos devolvera una clase hija del DAOFactory
-	DAOFactory factory=DAOFactory.obtenerDAOFactory(1);
+	DAOFactory factory=DAOFactory.obtenerDAOFactory(DAOFactory.MYSQL);
 
 	//El metodo de la clase hija nos devolvera una interfaz
 	UsuarioDAO dao=factory.getUsuarioDAO();
@@ -33,8 +33,8 @@ public class UsuarioService {
 	
 	public int insertarUsuario(String usuario, String clave, String nombre, String apellido, String fecha){
 		
-		int r=dao.insertarUsuario(usuario, clave, nombre, apellido, fecha);
-		return r;
+		return dao.insertarUsuario(usuario, clave, nombre, apellido, fecha);
+		
 	}
 	
 	
