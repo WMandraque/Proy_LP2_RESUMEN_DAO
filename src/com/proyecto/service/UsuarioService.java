@@ -8,7 +8,7 @@ import com.proyecto.dao.DAOFactory;
 import com.proyecto.interfaces.UsuarioDAO;
 
 
-//CAPA DE NEGOCIO
+/** CAPA DE NEGOCIO ***/
 
 public class UsuarioService {
 
