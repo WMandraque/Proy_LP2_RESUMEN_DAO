@@ -19,7 +19,7 @@ import com.proyecto.service.UsuarioService;
  * Servlet implementation class ServletLogueo
  */
 @WebServlet("/ServletLogueo")
-public class ServletLogueo extends HttpServlet {
+public class SvLogueo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
@@ -52,8 +52,6 @@ public class ServletLogueo extends HttpServlet {
 			PersonaDTO usuarioX=servicioUsuario.validarLogueo(usuario, clave);
 			
 			if (usuarioX!=null) {
-				
-				
 				//Capturamos la sesion actual
 				HttpSession miSesion=request.getSession();
 				

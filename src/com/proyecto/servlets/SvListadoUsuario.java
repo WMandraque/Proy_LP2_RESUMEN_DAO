@@ -18,7 +18,7 @@ import com.proyecto.service.UsuarioService;
  * Servlet implementation class ServletListadoUsuario
  */
 @WebServlet("/ServletListadoUsuario")
-public class ServletListadoUsuario extends HttpServlet {
+public class SvListadoUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
