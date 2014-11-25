@@ -47,16 +47,33 @@ public class ServletRegistrarUsuario extends HttpServlet {
 		RequestDispatcher rd=null;
 		
 		int r=servicioUsuario.insertarUsuario(usuario, clave, nombre, apellido, fecha);
-		if (r>0) {
-			request.setAttribute("mensaje", " Nuevo usuario agregado: "+usuario);
-			rd=request.getRequestDispatcher("listadoUsuarios");
-			rd.forward(request, response);
-		}else{
+		
+		for (int i = 0; i < usuario.length(); i++) {
 			
-			request.setAttribute("mensaje", "Error con los datos ingresados");
-			rd=request.getRequestDispatcher("registrarUsuario.jsp");
-			rd.forward(request, response);
+			if(usuario.toLowerCase().charAt(i)=='u'){
+
+				if (r>0) {
+					request.setAttribute("mensaje", " Nuevo usuario agregado: "+usuario);
+					rd=request.getRequestDispatcher("listadoUsuarios");
+					rd.forward(request, response);
+				}else{
+					
+					request.setAttribute("mensaje", "Error con los datos ingresados");
+					rd=request.getRequestDispatcher("registrarUsuario.jsp");
+					rd.forward(request, response);
+				}
+				
+				return;
+			}else{
+
+				request.setAttribute("mensaje", "Error con los datos ingresados");
+				rd=request.getRequestDispatcher("registrarUsuario.jsp");
+				rd.forward(request, response);
+			}
+			
 		}
+		
+		
 		
 	}catch(Exception e){
 		System.out.println("Erro con los disptacher: "+e);

@@ -25,8 +25,14 @@
 <%
         HttpSession miSession=request.getSession();
 		String datosSession = (String) miSession.getAttribute("datos");
-		if (datosSession != null)
+		if (datosSession == null){
+%>			
+			<jsp:forward page="logueo.jsp"></jsp:forward>
+<%			
+		}else{
 			out.println("Bienvenido: <b>" + datosSession + "</b>");
+		}
+			
 %>
 
 

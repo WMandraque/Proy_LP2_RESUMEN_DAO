@@ -1,3 +1,4 @@
+
 <frameset rows="100,*" border="0">
 
 <frame name="cabezera" src="cabezera.jsp">
@@ -8,8 +9,3 @@
 <frame name="central" src="central.jsp">
 
 </frameset>
-
-
-</frameset>
-
-

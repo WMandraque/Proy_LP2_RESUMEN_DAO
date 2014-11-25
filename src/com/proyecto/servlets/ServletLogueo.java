@@ -57,11 +57,14 @@ public class ServletLogueo extends HttpServlet {
 				//Capturamos la sesion actual
 				HttpSession miSesion=request.getSession();
 				
-				System.out.println("Sesion iniciada: "+miSesion.getId());
-				miSesion.setAttribute("datos", usuarioX.getNombre() +" "+usuarioX.getApellido() );
-				//Para saber la session actual
+				//Imprimimos el id de la sesion, Para saber la session actual
+				//System.out.println("Sesion iniciada: "+miSesion.getId());
+				
+				//A nivel de Session, Enviamos objetos a traves de la sesion, es casi igual al request
+				miSesion.setAttribute("datos", usuarioX.getNombre() +" "+usuarioX.getApellido());
+				
 				//A nivel de request
-				request.setAttribute("datos", usuarioX.getNombre());
+				request.setAttribute("datos", usuarioX.getNombre() +" "+usuarioX.getApellido());
 
 				rd=request.getRequestDispatcher("bienvenido.jsp");
 				rd.forward(request, response);
