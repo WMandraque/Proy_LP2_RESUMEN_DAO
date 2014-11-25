@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import utils.MySQLConexion;
+import utils.MySQLConexionM;
 
 import com.proyecto.beans.PersonaDTO;
 import com.proyecto.beans.UsuarioDTO;
@@ -19,22 +20,21 @@ import com.proyecto.interfaces.UsuarioDAO;
 //CAPA DE DATOS
 public class MySqlUsuarioDAO implements UsuarioDAO {
 	
-	Connection con=null;
+	MySQLConexionM con=new MySQLConexionM();
 
 	@Override
 	public UsuarioDTO validarLogueo(String usuario, String clave) {
-		
-		CallableStatement cst=null;
+
 		UsuarioDTO usuarioX=null;
 		
 		try {
-			con=MySQLConexion.getConexion();
+			
 			String sql="{call usp_buscausuario(?, ?)}";
-			cst=con.prepareCall(sql);
-			cst.setString(1, usuario);
-			cst.setString(2, clave);
+			con.hacerConexion(sql, MySQLConexionM.CST);
+			con.getCst().setString(1, usuario);
+			con.getCst().setString(2, clave);
 	
-			ResultSet rs=cst.executeQuery();
+			ResultSet rs=con.getCst().executeQuery();
 			
 			if(rs.next()){
 				usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5));
@@ -43,12 +43,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		} catch (Exception e) {
 			System.out.println("Error al validar usuario: "+e);
 		}finally{
-			try {
-				if(con!=null){con.close();}
-				if(cst!=null){cst.close();}
-			} catch (Exception e2) {
-				System.out.println("Error con las conexiones: "+e2);
-			}
+			con.cerrarConexion();
 		}
 		
 		return usuarioX;
@@ -57,7 +52,6 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	@Override
 	public int insertarUsuario(String usuario, String clave, String nombre, String apellido, String fecha) {
 		
-		CallableStatement cst=null;
 		Date fechaD=null;
 		SimpleDateFormat sdf1=new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat sdf2=new SimpleDateFormat("yyyy/MM/dd");
@@ -66,29 +60,19 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		try {
 			
 			fechaD=sdf1.parse(fecha);
-			
-			con=MySQLConexion.getConexion();
 			String sql="{call usp_insertarUsuario(?, ?, ?, ?, ?)}";
-			cst=con.prepareCall(sql);
-			cst.setString(1, usuario);
-			cst.setString(2, clave);
-			cst.setString(3, nombre);
-			cst.setString(4, apellido);
-			cst.setString(5, sdf2.format(fechaD));
+			con.hacerConexion(sql, MySQLConexionM.CST);
+			con.getCst().setString(1, usuario);
+			con.getCst().setString(2, clave);
+			con.getCst().setString(3, nombre);
+			con.getCst().setString(4, apellido);
+			con.getCst().setString(5, sdf2.format(fechaD));
 			
-			r=cst.executeUpdate();
+			r=con.getCst().executeUpdate();
 		} catch (Exception e) {
 			System.out.println("Error al registrar usuario: "+e);
 		}finally{
-
-			try {
-				if (con!=null) {con.close();}
-				if (cst!=null) {cst.close();}
-				
-			} catch (Exception e) {
-				System.out.println("Error con las conexiones: "+e);
-			}
-			
+			con.cerrarConexion();
 		}
 		return r;
 	}
@@ -96,55 +80,43 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	@Override
 	public int actualizarUsuario(String usuario, String clave, String nombre, String apellido) {
 		
-		CallableStatement  cst=null;
 		int r=0;
 		
 		try {
 			
-			con=MySQLConexion.getConexion();
-			String sql="{Call usp_modificarUsuarios(?, ?, ?, ?)}";
-			cst=con.prepareCall(sql);
-			cst.setString(1, usuario);
-			cst.setString(2, clave);
-			cst.setString(3, nombre);
-			cst.setString(4, apellido);
 			
-			r=cst.executeUpdate();
+			String sql="{Call usp_modificarUsuarios(?, ?, ?, ?)}";
+			con.hacerConexion(sql, MySQLConexionM.CST);
+			con.getCst().setString(1, usuario);
+			con.getCst().setString(2, clave);
+			con.getCst().setString(3, nombre);
+			con.getCst().setString(4, apellido);
+			
+			r=con.getCst().executeUpdate();
 			
 		} catch (Exception e) {
 			System.out.println("Error al actualizar usuario: "+e);
 		}finally{
-			try{
-				if(con!=null){con.close();}
-				if(cst!=null){cst.close();}
-			}catch(Exception e){
-				System.out.println("Error en las conexiones");
-			}
+	           con.cerrarConexion();
 		}
 		return r;
 	}
 
 	@Override
 	public int eliminarUsuario(String usuario) {
-		PreparedStatement pst=null;
+
 		int r=0;
 		 try {
-			 con=MySQLConexion.getConexion();
 			 String sql="delete from tb_usuario where usuario=?";
-			 pst=con.prepareStatement(sql);
-			 pst.setString(1, usuario);
+			 con.hacerConexion(sql, MySQLConexionM.PST);
+			 con.getPst().setString(1, usuario);
 			 
-			 r=pst.executeUpdate();
+			 r=con.getPst().executeUpdate();
 			
 		} catch (Exception e) {
 			System.out.println("Error al eliminar usuario: "+e);
 		}finally{
-			try {
-				if(con!=null){con.close();}
-				if(pst!=null){pst.close();}
-			} catch (Exception e) {
-				System.out.println("Error en cerrar conexion: "+e);
-			}
+			con.cerrarConexion();
 		}
 		return r;
 	}
@@ -152,15 +124,13 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	@Override
 	public List<UsuarioDTO> listadoUsuarios() {
 		
-		PreparedStatement pst=null;
 		List<UsuarioDTO> listadoUsuario=new ArrayList<UsuarioDTO>();
 		
 		try {
+		
+			con.hacerConexion("select*from tb_usuario", MySQLConexionM.PST);
 			
-			con=MySQLConexion.getConexion();
-			pst=con.prepareStatement("select*from tb_usuario");
-			
-			ResultSet rs=pst.executeQuery();
+			ResultSet rs=con.getPst().executeQuery();
 			
 			while(rs.next()){
 				
@@ -169,12 +139,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		} catch (Exception e) {
 			System.out.println("Error al listar usuarios: "+e);
 		}finally{
-			try{
-				if(con!=null){con.close();}
-				if(pst!=null){pst.close();}
-			}catch(Exception e){
-				System.out.println("Error en las conexiones: "+e);
-			}
+			con.cerrarConexion();
 		}
 		
 		
@@ -184,16 +149,13 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	@Override
 	public UsuarioDTO buscarUsuario(String usuario) {
 		
-		PreparedStatement pst=null;
 		UsuarioDTO usuarioX=null;
 		try {
 			
-			con=MySQLConexion.getConexion();
 			String sql="select*From tb_usuario where usuario=?";
-			pst=con.prepareStatement(sql);
-			pst.setString(1, usuario);
-			
-			ResultSet rs=pst.executeQuery();
+			con.hacerConexion(sql, MySQLConexionM.PST);
+			con.getPst().setString(1, usuario);
+			ResultSet rs=con.getPst().executeQuery();
 			if(rs.next()){
 				
 		      usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5));
@@ -202,12 +164,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		} catch (Exception e) {
 			System.out.println("Error al buscar usuario: "+e);
 		}finally{
-			try{
-				if(con!=null){con.close();}
-				if(pst!=null){pst.close();}
-			}catch(Exception e){
-				System.out.println("Error en las conexiones: "+e);
-			}
+			con.cerrarConexion();
 		}
 		return usuarioX;
 	}
