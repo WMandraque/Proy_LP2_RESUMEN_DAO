@@ -7,7 +7,7 @@
 
 <% 
    Date fecha=new Date();
-   SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+   SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyy");
 
 %>
 

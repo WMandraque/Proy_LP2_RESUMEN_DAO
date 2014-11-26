@@ -16,7 +16,7 @@
 <dt>Mantenimiento</dt>
 <li><a href="registrarUsuario.jsp" target="central">Registrar Usuario</li>
 <li><a href="actualizarUsuario.jsp" target="central">Actualizar Usuario</li>
-<li><a href="eliminarUsuario.jsp" target="central">Eliminar Usuario</a></li>
+<li><a href="eliminarUsuario.jsp" target="central">Eliminar Usuario</li>
 </dl>
 
 
@@ -27,12 +27,13 @@
 
 <dl>
 <dt>Operaciones extras</dt>
-<li><a href="listadoUsuarios" target="central">Listar Usuarios</a>
+<li><a href="listadoUsuarios" target="central">Listar Usuarios</li>
 </dl>
 
 <dl>
 <dt>Salir de esta pagina</dt>
 <li><a href="cerrando" target="_top">Cerrar sesion</a></li>
 </dl>
+
 </body>
 </html>

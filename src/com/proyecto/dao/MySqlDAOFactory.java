@@ -1,6 +1,7 @@
 package com.proyecto.dao;
 
 import com.proyecto.interfaces.UsuarioDAO;
+import com.proyecto.interfaces.VentaDAO;
 
 /*Clase hija de DAOFactory, segun el identificador*/
 public class MySqlDAOFactory extends DAOFactory {
@@ -12,6 +13,12 @@ public class MySqlDAOFactory extends DAOFactory {
 	@Override
 	public UsuarioDAO getUsuarioDAO() {
 		return new MySqlUsuarioDAO();  //Esta es la q tendra todos los mantenimientos usando MySQL
+	}
+
+	@Override
+	public VentaDAO getVentaDAO() {
+		// TODO Auto-generated method stub
+		return new MySqlVentaDAO();
 	}
 
 }

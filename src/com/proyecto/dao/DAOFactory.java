@@ -3,6 +3,7 @@ package com.proyecto.dao;
 import java.io.Serializable;
 
 import com.proyecto.interfaces.UsuarioDAO;
+import com.proyecto.interfaces.VentaDAO;
 
 public abstract class DAOFactory implements Serializable {
 	
@@ -20,6 +21,7 @@ public abstract class DAOFactory implements Serializable {
 	// si hay mas interfaces se debe crear mas metodos de acuerdo al numero de interfaces (lista los metodos abstractos) x cada interface
 	
 	public abstract UsuarioDAO getUsuarioDAO();
+	public abstract VentaDAO getVentaDAO();
 	
 	
 	//Metodo estatico que va a retornar la herencia hacia una clase hija
