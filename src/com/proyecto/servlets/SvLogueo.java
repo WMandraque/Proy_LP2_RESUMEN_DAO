@@ -60,9 +60,10 @@ public class SvLogueo extends HttpServlet {
 				
 				//A nivel de Session, Enviamos objetos a traves de la sesion, es casi igual al request
 				miSesion.setAttribute("datos", usuarioX.getNombre() +" "+usuarioX.getApellido());
-				
+				miSesion.setAttribute("idVendedor", usuarioX.getUsuario());
 				//A nivel de request
 				request.setAttribute("datos", usuarioX.getNombre() +" "+usuarioX.getApellido());
+				
 
 				rd=request.getRequestDispatcher("bienvenido.jsp");
 				rd.forward(request, response);

@@ -13,10 +13,12 @@ public class MySqlVentaDAO implements VentaDAO {
 		int r=0;
 		try {
 			
-			String sql="{Call usp_insertarVenta(?, ?)}";
+			String sql="{Call usp_registrarVenta(?, ?)}";
 			con.hacerConexion(sql, MySQLConexionM.CST);
 			con.getCst().setString(1, idVendedor);
 			con.getCst().setDouble(2, monto);
+			
+			System.out.println(idVendedor+" "+monto);
 			
 			r=con.getCst().executeUpdate();
 			

@@ -79,3 +79,11 @@ end$$
 DELIMITER ;
 
 
+DROP PROCEDURE IF EXISTS usp_registrarVenta;
+DELIMITER $$
+create procedure usp_registrarVenta(idVendedor char(5), monto decimal(8,2))
+begin
+     INSERT INTO tb_ventas(facceso, vendedor, monto) VALUES (curdate(),'U002',123.20);
+end$$
+DELIMITER ;
+

@@ -14,20 +14,20 @@
 
 <dl>
 <dt>Mantenimiento</dt>
-<li><a href="registrarUsuario.jsp" target="central">Registrar Usuario</li>
-<li><a href="actualizarUsuario.jsp" target="central">Actualizar Usuario</li>
-<li><a href="eliminarUsuario.jsp" target="central">Eliminar Usuario</li>
+<li><a href="registrarUsuario.jsp" target="central">Registrar Usuario</a></li>
+<li><a href="actualizarUsuario.jsp" target="central">Actualizar Usuario</a></li>
+<li><a href="eliminarUsuario.jsp" target="central">Eliminar Usuario</a></li>
 </dl>
 
 
 <dl>
 <dt>Venta</dt>
-<li><a href="registrarVenta.jsp" target="central">Registrar Venta</li>
+<li><a href="registrarVenta.jsp" target="central">Registrar Venta</a></li>
 </dl>
 
 <dl>
 <dt>Operaciones extras</dt>
-<li><a href="listadoUsuarios" target="central">Listar Usuarios</li>
+<li><a href="listadoUsuarios" target="central">Listar Usuarios</a></li>
 </dl>
 
 <dl>
