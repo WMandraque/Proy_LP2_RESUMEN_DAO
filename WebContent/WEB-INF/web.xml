@@ -57,17 +57,22 @@
     <servlet-name>cerrando</servlet-name>
     <url-pattern>/cerrando</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
-  <servlet-name>registrarVenta</servlet-name>
-  <servlet-class>com.proyecto.servlets.SvRegistrarVenta</servlet-class>
+    <servlet-name>registrarVenta</servlet-name>
+    <servlet-class>com.proyecto.servlets.SvRegistrarVenta</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  <servlet-name>registrarVenta</servlet-name>
-  <url-pattern>/registrarVenta</url-pattern>
-
+    <servlet-name>registrarVenta</servlet-name>
+    <url-pattern>/registrarVenta</url-pattern>
   </servlet-mapping>
   
+  
+    <servlet>
+    <servlet-name>listadoVentas</servlet-name>
+    <servlet-class>com.proyecto.servlets.SvListadoVentas</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listadoVentas</servlet-name>
+    <url-pattern>/listadoVentas</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,6 +1,7 @@
 package com.proyecto.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,59 +11,55 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.proyecto.beans.VentaDTO;
 import com.proyecto.service.VentaService;
 
-
-@WebServlet("/SvRegistrarVenta")
-public class SvRegistrarVenta extends HttpServlet {
+/**
+ * Servlet implementation class SvListadoVentas
+ */
+@WebServlet("/SvListadoVentas")
+public class SvListadoVentas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		procesar(request, response);
 	}
 
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		procesar(request, response);
 	}
 
-
 	private void procesar(HttpServletRequest request, HttpServletResponse response) {
-		
 		
 		try {
 			
 			
-			//Capturando datos
-			
-			String idVendedor=request.getParameter("txtIdVendedor");
-			double monto=Double.parseDouble(request.getParameter("txtMonto"));
-			
 			VentaService servicioVenta=new VentaService();
 			
-			int r=servicioVenta.registrarVenta(idVendedor, monto);
+			ArrayList<VentaDTO> listadoVentas=servicioVenta.listarVentas();
 			
-			RequestDispatcher rd;
+			RequestDispatcher rd = null;
 			HttpSession miSesion=request.getSession();
 			
-			if(r>0){
+			if(listadoVentas.size()>0){
 				
-				rd=request.getRequestDispatcher("listadoVentas");
+				miSesion.setAttribute("listadoVentas", listadoVentas);
+				rd=request.getRequestDispatcher("listarVentas.jsp");
 				
-			}else {
+			}else{
 				
-				miSesion.setAttribute("Mensaje", "Error al registrar ventas" );
-				rd=request.getRequestDispatcher("registrarVenta.jsp");
 				
 			}
 			
 			rd.forward(request, response);
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Error con los distapcher");
 		}
 		
+
 		
 	}
 

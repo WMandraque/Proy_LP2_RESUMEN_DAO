@@ -42,7 +42,7 @@ $(function(){
 </tr>
 
 <tr>
-<td><input type="button" id="btnRegistrar" name="btnRegistrar" value="Registrar" onkeypress="parseFloat(s)"></td>
+<td><input type="submit" id="btnRegistrar" name="btnRegistrar" value="Registrar"></td>
 <td><input type="submit" id="btnLimpiar" name="btnLimpiar" value="Limpiar"></td>
 </table>
 

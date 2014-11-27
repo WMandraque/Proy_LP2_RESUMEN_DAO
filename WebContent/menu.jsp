@@ -23,6 +23,7 @@
 <dl>
 <dt>Venta</dt>
 <li><a href="registrarVenta.jsp" target="central">Registrar Venta</a></li>
+<li><a href="listadoVentas" target="central">Listar Ventas</a></li>
 </dl>
 
 <dl>
