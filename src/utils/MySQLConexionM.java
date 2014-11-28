@@ -6,15 +6,19 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.mysql.jdbc.Statement;
+
 public class MySQLConexionM {
 	
 
     Connection con = null;
 	private CallableStatement cst;
 	private PreparedStatement pst;
+	private Statement          st;
 	
 	public static final int CST=1;
 	public static final int PST=2;
+	public static final int ST=3;
 	
 	public PreparedStatement getPst() {
 		return pst;
@@ -22,6 +26,11 @@ public class MySQLConexionM {
 	public CallableStatement getCst() {
 		return cst;
 	}
+	
+	public Statement getSt() {
+		return st;
+	}
+
 
 
 	
@@ -47,7 +56,7 @@ public class MySQLConexionM {
 	
 	
 	
-	public void hacerConexion(String sql, int tipoSentencia){
+	public void prepararSentencia(String sql, int tipoSentencia){
 		try {
 			Connection con=getConexion();
 			

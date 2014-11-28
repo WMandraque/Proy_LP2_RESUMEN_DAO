@@ -30,7 +30,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		try {
 			
 			String sql="{call usp_buscausuario(?, ?)}";
-			con.hacerConexion(sql, MySQLConexionM.CST);
+			con.prepararSentencia(sql, MySQLConexionM.CST);
 			con.getCst().setString(1, usuario);
 			con.getCst().setString(2, clave);
 	
@@ -61,7 +61,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			
 			fechaD=sdf1.parse(fecha);
 			String sql="{call usp_insertarUsuario(?, ?, ?, ?, ?)}";
-			con.hacerConexion(sql, MySQLConexionM.CST);
+			con.prepararSentencia(sql, MySQLConexionM.CST);
 			con.getCst().setString(1, usuario);
 			con.getCst().setString(2, clave);
 			con.getCst().setString(3, nombre);
@@ -86,7 +86,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			
 			
 			String sql="{Call usp_modificarUsuarios(?, ?, ?, ?)}";
-			con.hacerConexion(sql, MySQLConexionM.CST);
+			con.prepararSentencia(sql, MySQLConexionM.CST);
 			con.getCst().setString(1, usuario);
 			con.getCst().setString(2, clave);
 			con.getCst().setString(3, nombre);
@@ -108,7 +108,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		int r=0;
 		 try {
 			 String sql="delete from tb_usuario where usuario=?";
-			 con.hacerConexion(sql, MySQLConexionM.PST);
+			 con.prepararSentencia(sql, MySQLConexionM.PST);
 			 con.getPst().setString(1, usuario);
 			 
 			 r=con.getPst().executeUpdate();
@@ -128,7 +128,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		
 		try {
 		
-			con.hacerConexion("select*from tb_usuario", MySQLConexionM.PST);
+			con.prepararSentencia("select*from tb_usuario", MySQLConexionM.PST);
 			
 			ResultSet rs=con.getPst().executeQuery();
 			
@@ -153,7 +153,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		try {
 			
 			String sql="select*From tb_usuario where usuario=?";
-			con.hacerConexion(sql, MySQLConexionM.PST);
+			con.prepararSentencia(sql, MySQLConexionM.PST);
 			con.getPst().setString(1, usuario);
 			ResultSet rs=con.getPst().executeQuery();
 			if(rs.next()){

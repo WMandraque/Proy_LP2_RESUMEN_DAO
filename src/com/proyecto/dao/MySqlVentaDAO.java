@@ -3,6 +3,8 @@ package com.proyecto.dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.sql.rowset.CachedRowSet;
+
 import utils.MySQLConexionM;
 
 import com.proyecto.beans.VentaDTO;
@@ -19,7 +21,7 @@ public class MySqlVentaDAO implements VentaDAO {
 		try {
 			
 			String sql="{Call usp_registrarVenta(?, ?)}";
-			con.hacerConexion(sql, MySQLConexionM.CST);
+			con.prepararSentencia(sql, MySQLConexionM.CST);
 			con.getCst().setString(1, idVendedor);
 			con.getCst().setDouble(2, monto);
 			
@@ -40,8 +42,9 @@ public class MySqlVentaDAO implements VentaDAO {
 		try {
 			
 			String sql="select*from tb_ventas";
-			con.hacerConexion(sql, MySQLConexionM.PST);
+			con.prepararSentencia(sql, MySQLConexionM.PST);
 			ResultSet rs=con.getPst().executeQuery();
+		
 			
 			while(rs.next()){
 				
