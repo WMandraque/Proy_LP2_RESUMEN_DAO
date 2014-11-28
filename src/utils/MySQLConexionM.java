@@ -25,8 +25,10 @@ public class MySQLConexionM {
 
 
 	
+	
+	
 
-
+    //Metodo que se va a encargar de devolver una conexion
 	public Connection getConexion() {
 	
 		try {
@@ -44,6 +46,7 @@ public class MySQLConexionM {
 	}
 	
 	
+	
 	public void hacerConexion(String sql, int tipoSentencia){
 		try {
 			Connection con=getConexion();
@@ -51,7 +54,6 @@ public class MySQLConexionM {
 			switch (tipoSentencia) {
 			case CST:
 				cst=con.prepareCall(sql);
-	
 			case PST:
 				pst=con.prepareStatement(sql);
 			}
@@ -62,20 +64,12 @@ public class MySQLConexionM {
 	
 	
 	
+	//Metodo que va cerrar los objetos para ejecutar las sentencias sql y conexiones
 	public void cerrarConexion(){
-		
 	try {
-		if(cst!=null){
 			cst.close();
-		}
-		if(pst!=null){
 			pst.close();
-		}
-		
-		if(con!=null){
 			con.close();
-		}
-		
 	} catch (Exception e) {
 		System.out.println("Error al cerrar conexiones y sentencias: "+e);
 	}

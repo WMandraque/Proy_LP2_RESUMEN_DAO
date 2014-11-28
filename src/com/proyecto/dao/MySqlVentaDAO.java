@@ -48,6 +48,7 @@ public class MySqlVentaDAO implements VentaDAO {
 				listarVentas.add(new VentaDTO(rs.getInt(1), rs.getDate(2), rs.getString(3), rs.getDouble(4)));
 			}
 			
+			rs.close();
 		} catch (Exception e) {
 			System.out.println("Error al registrar venta: "+e);
 		}finally{
