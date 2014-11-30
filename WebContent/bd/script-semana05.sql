@@ -1,52 +1,71 @@
 DROP DATABASE IF EXISTS base;
-
 -- creamos la bd
 CREATE DATABASE base;
-
-
 -- activamos la bd
 USE base;
-
-
--- creamos la tabla
-CREATE TABLE tb_usuario(
-usuario char(4) NOT NULL,
-clave char(5),
+-- creamos las tablas
+CREATE TABLE tb_usuario
+(
+usuario  char(4) NOT NULL,
+clave    char(5),
 nombre varchar(15),
 apellido varchar(15),
-facceso date
+facceso date  null,
+estado  int(1) DEFAULT 1
+);
+
+create table tb_productos(
+idprod      char(5) not null primary key,
+descripcion varchar(30),
+precio		decimal(8,2),
+estado		boolean
 );
 
 CREATE TABLE tb_ventas(
 numvta   int(8) AUTO_INCREMENT NOT NULL primary KEY,
-facceso date  null,
-vendedor char(4),
-monto 	 decimal(8,2)
+fchvta  date  null,
+vendedor char(4)
 );
+
+CREATE TABLE tb_detventas(
+numvta   int(8) NOT NULL,
+idprod   char(5) not null ,
+cant     int(3)  null,
+precio   decimal(8,2)
+);
+
 
 -- creamos la pk
 ALTER TABLE tb_usuario ADD PRIMARY KEY (usuario);
+ALTER TABLE tb_detventas ADD PRIMARY KEY (numvta,idprod);
 -- creamos la fk
-ALTER TABLE tb_ventas ADD foreign key (vendedor) 
-	references tb_usuario(usuario);
-	
-
+ALTER TABLE tb_ventas ADD foreign key (vendedor) references tb_usuario(usuario);
+ALTER TABLE tb_detventas ADD foreign key (numvta) references tb_ventas(numvta);
+ALTER TABLE tb_detventas ADD foreign key (idprod) references tb_productos(idprod);
 
 -- inserts
-INSERT INTO tb_usuario VALUES('U001', '10001', 'Juan', 'Perez','2014/10/01');
-INSERT INTO tb_usuario VALUES('U002', '10003', 'Jose', 'Atuncar','2014/10/02');
-INSERT INTO tb_usuario VALUES('U003', '10004', 'Abel', 'paraguay','2014/10/03');
-INSERT INTO tb_usuario VALUES('U004', '10005', 'Rosa', 'centeno','2014/10/04');
+INSERT INTO tb_usuario 	VALUES ('U001', '10001', 'Juan', 'Perez','2014/10/01',1);
+INSERT INTO tb_usuario 	(usuario,clave,nombre,apellido, facceso)	VALUES ('U002', '10002', 'Candy', 'Millet', curdate());
+
+INSERT INTO tb_ventas (fchvta, vendedor) VALUES ('2014/10/01','U002');
+INSERT INTO tb_ventas (numvta,fchvta,vendedor) VALUES (05,curdate(),'U001');
+
+insert into tb_productos values ('P0001','Pizza familiar',35,1);
+insert into tb_productos values ('P0002','Pizza suprema',45,0);
+insert into tb_productos values ('P0003','Pizza personal',8,1);
+insert into tb_productos values ('P0004','Inca Kola',2.5,1);
+insert into tb_productos values ('P0005','Rolls',7.5,0);
+
+INSERT INTO tb_detventas VALUES (01,'P0001',1,35);
+INSERT INTO tb_detventas VALUES (05,'P0003',2,8);
+INSERT INTO tb_detventas VALUES (05,'P0004',2,2.5);
 
 
-INSERT INTO tb_ventas VALUES (01,curdate(),'U002',123.20);
 
 -- consultas
 SELECT * FROM tb_usuario;
 SELECT * FROM tb_ventas;
-
-
--- ejemplo de procedimiento almancenado de consulta
+SELECT * FROM tb_detventas;
 
 DROP procedure IF EXISTS usp_buscausuario;
 DELIMiTER $$
@@ -64,7 +83,7 @@ DROP procedure IF EXISTS usp_insertarUsuario;
 DELIMiTER $$
 create procedure usp_insertarUsuario(usr char(4), pass varchar(5), nom varchar(70), ape varchar(70), fecha date )
 begin
-      insert into tb_usuario values (usr, pass, nom, ape, fecha);
+      insert into tb_usuario values (usr, pass, nom, ape, fecha, default);
 end$$
 DELIMiTER ;
 
@@ -81,9 +100,8 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS usp_registrarVenta;
 DELIMITER $$
-create procedure usp_registrarVenta(idVendedor char(5), monto decimal(8,2))
+create procedure usp_registrarVenta(idVendedor char(5))
 begin
-     INSERT INTO tb_ventas(facceso, vendedor, monto) VALUES (curdate(),'U002',123.20);
+     INSERT INTO tb_ventas(fchvta, vendedor) VALUES (curdate(), idVendedor);
 end$$
 DELIMITER ;
-

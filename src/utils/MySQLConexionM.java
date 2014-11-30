@@ -12,13 +12,11 @@ public class MySQLConexionM {
 	
 
     Connection con = null;
-	private CallableStatement cst;
-	private PreparedStatement pst;
-	private Statement          st;
+	private CallableStatement cst=null;
+	private PreparedStatement pst=null;
 	
 	public static final int CST=1;
 	public static final int PST=2;
-	public static final int ST=3;
 	
 	public PreparedStatement getPst() {
 		return pst;
@@ -26,15 +24,6 @@ public class MySQLConexionM {
 	public CallableStatement getCst() {
 		return cst;
 	}
-	
-	public Statement getSt() {
-		return st;
-	}
-
-
-
-	
-	
 	
 
     //Metodo que se va a encargar de devolver una conexion
@@ -76,9 +65,9 @@ public class MySQLConexionM {
 	//Metodo que va cerrar los objetos para ejecutar las sentencias sql y conexiones
 	public void cerrarConexion(){
 	try {
-			cst.close();
-			pst.close();
-			con.close();
+			if(cst!=null){cst.close();}
+			if(pst!=null){pst.close();}
+			if(con!=null){con.close();}
 	} catch (Exception e) {
 		System.out.println("Error al cerrar conexiones y sentencias: "+e);
 	}

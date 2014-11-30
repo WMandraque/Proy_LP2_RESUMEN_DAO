@@ -37,11 +37,10 @@ public class SvRegistrarVenta extends HttpServlet {
 			//Capturando datos
 			
 			String idVendedor=request.getParameter("txtIdVendedor");
-			double monto=Double.parseDouble(request.getParameter("txtMonto"));
 			
 			VentaService servicioVenta=new VentaService();
 			
-			int r=servicioVenta.registrarVenta(idVendedor, monto);
+			int r=servicioVenta.registrarVenta(idVendedor);
 			
 			RequestDispatcher rd;
 			HttpSession miSesion=request.getSession();

@@ -2,6 +2,7 @@ package com.proyecto.dao;
 
 import java.io.Serializable;
 
+import com.proyecto.interfaces.ProductoDAO;
 import com.proyecto.interfaces.UsuarioDAO;
 import com.proyecto.interfaces.VentaDAO;
 
@@ -22,6 +23,7 @@ public abstract class DAOFactory implements Serializable {
 	
 	public abstract UsuarioDAO getUsuarioDAO();
 	public abstract VentaDAO getVentaDAO();
+	public abstract ProductoDAO getProductoDAO();
 	
 	
 	//Metodo estatico que va a retornar la herencia hacia una clase hija

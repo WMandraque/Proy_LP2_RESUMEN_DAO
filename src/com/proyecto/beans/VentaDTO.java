@@ -7,14 +7,12 @@ public class VentaDTO {
 	private int   numvta;   
 	private Date  facceso; 
 	private String vendedor; 
-	private double monto; 
 	
-	public VentaDTO(int numvta, Date facceso, String vendedor, double monto) {
+	public VentaDTO(int numvta, Date facceso, String vendedor) {
 		super();
 		this.numvta = numvta;
 		this.facceso = facceso;
 		this.vendedor = vendedor;
-		this.monto = monto;
 	}
 
 	public int getNumvta() {
@@ -29,10 +27,6 @@ public class VentaDTO {
 		return vendedor;
 	}
 
-	public double getMonto() {
-		return monto;
-	}
-
 	public void setNumvta(int numvta) {
 		this.numvta = numvta;
 	}
@@ -45,10 +39,7 @@ public class VentaDTO {
 		this.vendedor = vendedor;
 	}
 
-	public void setMonto(double monto) {
-		this.monto = monto;
-	} 	
-	
+
 	
 
 }

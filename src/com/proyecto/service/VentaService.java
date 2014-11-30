@@ -12,9 +12,9 @@ public class VentaService {
 	DAOFactory factory=DAOFactory.obtenerDAOFactory(DAOFactory.MYSQL);
 	VentaDAO dao=factory.getVentaDAO();
 	
-	public int registrarVenta(String idVendedor, double monto) {
+	public int registrarVenta(String idVendedor) {
 		
-		return dao.registrarVenta(idVendedor, monto);
+		return dao.registrarVenta(idVendedor);
 	}
 	
 	public ArrayList<VentaDTO> listarVentas(){

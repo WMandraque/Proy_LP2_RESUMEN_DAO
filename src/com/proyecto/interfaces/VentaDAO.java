@@ -8,7 +8,7 @@ public interface VentaDAO {
 	
 	
 	
-	int registrarVenta(String idVendedor, double monto);
+	int registrarVenta(String idVendedor);
 	
 	
 	ArrayList<VentaDTO> listarVentas();

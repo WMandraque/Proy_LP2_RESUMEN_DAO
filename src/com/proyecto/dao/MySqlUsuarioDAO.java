@@ -37,7 +37,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			ResultSet rs=con.getCst().executeQuery();
 			
 			if(rs.next()){
-				usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5));
+				usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getInt(6));
 			}
 			
 		} catch (Exception e) {
@@ -134,7 +134,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			
 			while(rs.next()){
 				
-				listadoUsuario.add(new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5)));
+				listadoUsuario.add(new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getInt(6)));
 			}
 		} catch (Exception e) {
 			System.out.println("Error al listar usuarios: "+e);
@@ -158,7 +158,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 			ResultSet rs=con.getPst().executeQuery();
 			if(rs.next()){
 				
-		      usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5));
+		      usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getInt(6));
 			}
 			
 		} catch (Exception e) {

@@ -15,23 +15,23 @@ public class MySqlVentaDAO implements VentaDAO {
 	MySQLConexionM con=new MySQLConexionM();
 	@Override
 	
-	public int registrarVenta(String idVendedor, double monto) {
+	public int registrarVenta(String idVendedor) {
 		
 		int r=0;
 		try {
 			
-			String sql="{Call usp_registrarVenta(?, ?)}";
+			String sql="{Call usp_registrarVenta(?)}";
 			con.prepararSentencia(sql, MySQLConexionM.CST);
 			con.getCst().setString(1, idVendedor);
-			con.getCst().setDouble(2, monto);
-			
-			System.out.println(idVendedor+" "+monto);
-			
+
 			r=con.getCst().executeUpdate();
 			
 		} catch (Exception e) {
+			System.out.println("Error al registrar venta: "+e);
+		}finally{
 			con.cerrarConexion();
 		}
+		
 		return r;
 	}
 	
@@ -48,13 +48,14 @@ public class MySqlVentaDAO implements VentaDAO {
 			
 			while(rs.next()){
 				
-				listarVentas.add(new VentaDTO(rs.getInt(1), rs.getDate(2), rs.getString(3), rs.getDouble(4)));
+				listarVentas.add(new VentaDTO(rs.getInt(1), rs.getDate(2), rs.getString(3)));
 			}
 			
-			rs.close();
+
 		} catch (Exception e) {
-			System.out.println("Error al registrar venta: "+e);
+			System.out.println("Error al listar ventas: "+e);
 		}finally{
+			
 			con.cerrarConexion();
 		}
 		

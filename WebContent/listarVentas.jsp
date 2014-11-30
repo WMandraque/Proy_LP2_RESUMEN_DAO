@@ -30,7 +30,6 @@ ArrayList<VentaDTO> listadoVentas=(ArrayList<VentaDTO>)miSesion.getAttribute("li
 <td><label>Id Venta</label></td>
 <td><label>Fecha de Venta</label></td>
 <td><label>Id Vendedor</label></td>
-<td><label>Monto</label></td>
 </tr>
 
 <%
@@ -41,7 +40,6 @@ for(int i=0; i<listadoVentas.size();i++){
 <td><label><%=x.getNumvta()%></label></td>
 <td><label><%=x.getFacceso()%></label></td>
 <td><label><%=x.getVendedor()%></label></td>
-<td><label><%=x.getMonto()%></label></td>
 </tr>
 <%	
 }
