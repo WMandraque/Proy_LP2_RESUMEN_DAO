@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SOCRATES INTRANET</title>
-<link rel="stylesheet" href="css/estilos.css" type="text/css"> <!-- instanciamos el css -->
+<link rel="stylesheet" href="css/estilos.css" type="text/css"> <!-- instanciamos el css ---->
 </head>
 <body>
 
