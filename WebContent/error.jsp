@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- mostraremos el mensaje enviado por el Servlet logueo -->
+<!-- mostraremos el mensaje enviado por el Servlet logueo ------ -->
 	<%
 		String mensaje = (String) request.getAttribute("mensaje");
 		if (mensaje != null)
