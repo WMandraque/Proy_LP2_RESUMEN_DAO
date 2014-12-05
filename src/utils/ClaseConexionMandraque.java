@@ -8,10 +8,10 @@ import java.sql.SQLException;
 
 import com.mysql.jdbc.Statement;
 
-public class MySQLConexionM {
+public class ClaseConexionMandraque {
 	
 
-    Connection con = null;
+    
 	private CallableStatement cst=null;
 	private PreparedStatement pst=null;
 	
@@ -24,11 +24,11 @@ public class MySQLConexionM {
 	public CallableStatement getCst() {
 		return cst;
 	}
-	
 
-    //Metodo que se va a encargar de devolver una conexion
-	public Connection getConexion() {
-	
+	//Metodo que se va a encargar de devolver una conexion
+	public static Connection getConexion() {
+		
+		Connection con = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost/base";
@@ -45,10 +45,9 @@ public class MySQLConexionM {
 	
 	
 	
-	public void prepararSentencia(String sql, int tipoSentencia){
+	public void prepararSentencia(Connection con, String sql, int tipoSentencia){
 		try {
-			Connection con=getConexion();
-			
+
 			switch (tipoSentencia) {
 			case CST:
 				cst=con.prepareCall(sql);
@@ -63,7 +62,7 @@ public class MySQLConexionM {
 	
 	
 	//Metodo que va cerrar los objetos para ejecutar las sentencias sql y conexiones
-	public void cerrarConexion(){
+	public void cerrarConexionSentencias(Connection con){
 	try {
 			if(cst!=null){cst.close();}
 			if(pst!=null){pst.close();}

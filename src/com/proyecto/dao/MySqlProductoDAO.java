@@ -1,26 +1,31 @@
 package com.proyecto.dao;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import utils.MySQLConexionM;
+import utils.ClaseConexionMandraque;
 
 import com.proyecto.beans.ProductoDTO;
 import com.proyecto.interfaces.ProductoDAO;
 
 public class MySqlProductoDAO implements ProductoDAO {
 	
-	MySQLConexionM con=new MySQLConexionM();
+	ClaseConexionMandraque ccm=new ClaseConexionMandraque();
 
 	@Override
 	public ArrayList<ProductoDTO> listadoProducto() {
+		
 		ArrayList<ProductoDTO> listadoProductos=new ArrayList<ProductoDTO>();
+		Connection con=null;
 		
 		try {
 			
+			con=ClaseConexionMandraque.getConexion();
+			
 			String sql="Select*From tb_productos where estado=1";
-			con.prepararSentencia(sql, MySQLConexionM.PST);
-			ResultSet rs=con.getPst().executeQuery();
+			ccm.prepararSentencia(con, sql, ClaseConexionMandraque.PST);
+			ResultSet rs=ccm.getPst().executeQuery();
 			
 			while(rs.next()){
 				
@@ -33,7 +38,7 @@ public class MySqlProductoDAO implements ProductoDAO {
 			System.out.println("Error al listar productos: "+e);
 		}finally{
 			
-			con.cerrarConexion();
+			ccm.cerrarConexionSentencias(con);
 		}
 		return listadoProductos;
 	}

@@ -12,6 +12,7 @@ public class MySQLConexion {
 
 	public static Connection getConexion(){
 		
+		//Objeto de tipo conexion
 		Connection con = null;
 		
 		try{

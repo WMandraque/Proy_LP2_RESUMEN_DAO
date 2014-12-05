@@ -5,13 +5,14 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import utils.MySQLConexion;
-import utils.MySQLConexionM;
+import utils.ClaseConexionMandraque;
 
 import com.proyecto.beans.PersonaDTO;
 import com.proyecto.beans.UsuarioDTO;
@@ -20,21 +21,24 @@ import com.proyecto.interfaces.UsuarioDAO;
 //CAPA DE DATOS
 public class MySqlUsuarioDAO implements UsuarioDAO {
 	
-	MySQLConexionM con=new MySQLConexionM();
+	ClaseConexionMandraque ccm=new ClaseConexionMandraque();
 
 	@Override
 	public UsuarioDTO validarLogueo(String usuario, String clave) {
 
 		UsuarioDTO usuarioX=null;
+		Connection con=null;
 		
 		try {
 			
+			con=ClaseConexionMandraque.getConexion();
+			
 			String sql="{call usp_buscausuario(?, ?)}";
-			con.prepararSentencia(sql, MySQLConexionM.CST);
-			con.getCst().setString(1, usuario);
-			con.getCst().setString(2, clave);
+			ccm.prepararSentencia(con, sql, ClaseConexionMandraque.CST);
+			ccm.getCst().setString(1, usuario);
+			ccm.getCst().setString(2, clave);
 	
-			ResultSet rs=con.getCst().executeQuery();
+			ResultSet rs=ccm.getCst().executeQuery();
 			
 			if(rs.next()){
 				usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getInt(6));
@@ -43,7 +47,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		} catch (Exception e) {
 			System.out.println("Error al validar usuario: "+e);
 		}finally{
-			con.cerrarConexion();
+			ccm.cerrarConexionSentencias(con);
 		}
 		
 		return usuarioX;
@@ -57,22 +61,39 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		SimpleDateFormat sdf2=new SimpleDateFormat("yyyy/MM/dd");
 		int r=0;
 		
+		Connection con=null;
+		
 		try {
+			
+			con=ClaseConexionMandraque.getConexion();
+	
+		
+			con.setAutoCommit(false);
 			
 			fechaD=sdf1.parse(fecha);
 			String sql="{call usp_insertarUsuario(?, ?, ?, ?, ?)}";
-			con.prepararSentencia(sql, MySQLConexionM.CST);
-			con.getCst().setString(1, usuario);
-			con.getCst().setString(2, clave);
-			con.getCst().setString(3, nombre);
-			con.getCst().setString(4, apellido);
-			con.getCst().setString(5, sdf2.format(fechaD));
+			ccm.prepararSentencia(con, sql, ClaseConexionMandraque.CST);
+			ccm.getCst().setString(1, usuario);
+			ccm.getCst().setString(2, clave);
+			ccm.getCst().setString(3, nombre);
+			ccm.getCst().setString(4, apellido);
+			ccm.getCst().setString(5, sdf2.format(fechaD));
 			
-			r=con.getCst().executeUpdate();
+			r=ccm.getCst().executeUpdate();
+		
+			con.commit();
+			
 		} catch (Exception e) {
+			
 			System.out.println("Error al registrar usuario: "+e);
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+			e1.printStackTrace();
+			}
+			
 		}finally{
-			con.cerrarConexion();
+			ccm.cerrarConexionSentencias(con);
 		}
 		return r;
 	}
@@ -82,22 +103,34 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		
 		int r=0;
 		
+		Connection con=null;
+		
 		try {
 			
+			con=ClaseConexionMandraque.getConexion();
+			
+			con.setAutoCommit(false);
 			
 			String sql="{Call usp_modificarUsuarios(?, ?, ?, ?)}";
-			con.prepararSentencia(sql, MySQLConexionM.CST);
-			con.getCst().setString(1, usuario);
-			con.getCst().setString(2, clave);
-			con.getCst().setString(3, nombre);
-			con.getCst().setString(4, apellido);
+			ccm.prepararSentencia(con, sql, ClaseConexionMandraque.CST);
+			ccm.getCst().setString(1, usuario);
+			ccm.getCst().setString(2, clave);
+			ccm.getCst().setString(3, nombre);
+			ccm.getCst().setString(4, apellido);
 			
-			r=con.getCst().executeUpdate();
+			r=ccm.getCst().executeUpdate();
+			
+			con.commit();
 			
 		} catch (Exception e) {
 			System.out.println("Error al actualizar usuario: "+e);
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+			e1.printStackTrace();
+			}
 		}finally{
-	           con.cerrarConexion();
+	           ccm.cerrarConexionSentencias(con);
 		}
 		return r;
 	}
@@ -106,17 +139,30 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	public int eliminarUsuario(String usuario) {
 
 		int r=0;
+		
+		Connection con=null;
 		 try {
-			 String sql="delete from tb_usuario where usuario=?";
-			 con.prepararSentencia(sql, MySQLConexionM.PST);
-			 con.getPst().setString(1, usuario);
 			 
-			 r=con.getPst().executeUpdate();
+			 con=ClaseConexionMandraque.getConexion();
+			 con.setAutoCommit(false);
+			 
+			 String sql="delete from tb_usuario where usuario=?";
+			 ccm.prepararSentencia(con, sql, ClaseConexionMandraque.PST);
+			 ccm.getPst().setString(1, usuario);
+			 
+			 r=ccm.getPst().executeUpdate();
+			 
+			 con.commit();
 			
 		} catch (Exception e) {
-			System.out.println("Error al eliminar usuario: "+e);
+			System.out.println("Error al eliminar  usuario: "+e);
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		}finally{
-			con.cerrarConexion();
+			ccm.cerrarConexionSentencias(con);;
 		}
 		return r;
 	}
@@ -126,11 +172,15 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		
 		List<UsuarioDTO> listadoUsuario=new ArrayList<UsuarioDTO>();
 		
-		try {
+		Connection con=null;
 		
-			con.prepararSentencia("select*from tb_usuario", MySQLConexionM.PST);
+		try {
 			
-			ResultSet rs=con.getPst().executeQuery();
+			con=ClaseConexionMandraque.getConexion();
+		
+			ccm.prepararSentencia(con,"select*from tb_usuario", ClaseConexionMandraque.PST);
+			
+			ResultSet rs=ccm.getPst().executeQuery();
 			
 			while(rs.next()){
 				
@@ -139,7 +189,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		} catch (Exception e) {
 			System.out.println("Error al listar usuarios: "+e);
 		}finally{
-			con.cerrarConexion();
+			ccm.cerrarConexionSentencias(con);
 		}
 		
 		
@@ -150,12 +200,15 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	public UsuarioDTO buscarUsuario(String usuario) {
 		
 		UsuarioDTO usuarioX=null;
+		Connection con=null;
 		try {
 			
+			con=ClaseConexionMandraque.getConexion();
+			
 			String sql="select*From tb_usuario where usuario=?";
-			con.prepararSentencia(sql, MySQLConexionM.PST);
-			con.getPst().setString(1, usuario);
-			ResultSet rs=con.getPst().executeQuery();
+			ccm.prepararSentencia(con, sql, ClaseConexionMandraque.PST);
+			ccm.getPst().setString(1, usuario);
+			ResultSet rs=ccm.getPst().executeQuery();
 			if(rs.next()){
 				
 		      usuarioX=new UsuarioDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getInt(6));
@@ -164,7 +217,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		} catch (Exception e) {
 			System.out.println("Error al buscar usuario: "+e);
 		}finally{
-			con.cerrarConexion();
+			ccm.cerrarConexionSentencias(con);
 		}
 		return usuarioX;
 	}

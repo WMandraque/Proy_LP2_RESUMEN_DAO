@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import com.proyecto.beans.VentaDTO;
 import com.proyecto.service.VentaService;
@@ -40,18 +41,15 @@ public class SvListadoVentas extends HttpServlet {
 			
 			ArrayList<VentaDTO> listadoVentas=servicioVenta.listarVentas();
 			
+
+			
 			RequestDispatcher rd = null;
 			HttpSession miSesion=request.getSession();
-			
-			if(listadoVentas.size()>0){
+		
+			miSesion.setAttribute("listadoVentas", listadoVentas);
+			rd=request.getRequestDispatcher("listarVentas.jsp");
 				
-				miSesion.setAttribute("listadoVentas", listadoVentas);
-				rd=request.getRequestDispatcher("listarVentas.jsp");
-				
-			}else{
-				
-				
-			}
+		
 			
 			rd.forward(request, response);
 			

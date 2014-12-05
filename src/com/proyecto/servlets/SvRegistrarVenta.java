@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.proyecto.beans.VentaDTO;
 import com.proyecto.service.VentaService;
 
 
@@ -37,10 +38,17 @@ public class SvRegistrarVenta extends HttpServlet {
 			//Capturando datos
 			
 			String idVendedor=request.getParameter("txtIdVendedor");
+			String idProducto=request.getParameter("cboProductos");
+			int    cantidad=Integer.parseInt(request.getParameter("txtCantidad"));
+			double precio=Double.parseDouble(request.getParameter("txtPrecio"));
+			
+			
+			VentaDTO ventaX=new VentaDTO(idVendedor, idProducto, cantidad, precio);
 			
 			VentaService servicioVenta=new VentaService();
 			
-			int r=servicioVenta.registrarVenta(idVendedor);
+	
+			int r=servicioVenta.registrarVenta(ventaX);
 			
 			RequestDispatcher rd;
 			HttpSession miSesion=request.getSession();

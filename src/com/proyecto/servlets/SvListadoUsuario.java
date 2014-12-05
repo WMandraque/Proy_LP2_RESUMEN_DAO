@@ -43,6 +43,7 @@ public class SvListadoUsuario extends HttpServlet {
 			request.setAttribute("listadoUsuarios", listadoUsuario);
 			rd=request.getRequestDispatcher("listarUsuario.jsp");
 			rd.forward(request, response);
+
 			
 		} catch (Exception e) {
 			System.out.println("Error con los distpacher: "+e);

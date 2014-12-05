@@ -49,7 +49,7 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 
 <tr>
 <td><label>Numero de Venta</label></td>
-<td><input type="text" readonly="readonly"" value="Autogenerado"></td>
+<td><input type="text" readonly="readonly" value="AUTOGENERADO"></td>
 </tr>
 
 <tr>

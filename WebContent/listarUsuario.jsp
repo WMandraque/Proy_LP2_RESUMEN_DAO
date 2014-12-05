@@ -1,14 +1,13 @@
 <%@page import="com.proyecto.beans.UsuarioDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html">
 
-<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
+<%@ page import="com.proyecto.beans.UsuarioDTO"%>
+<%@ page import="java.util.ArrayList"%>
 
-<%
-List<UsuarioDTO> listadoUsuario=(List<UsuarioDTO>)request.getAttribute("listadoUsuarios");
-
-%>
 
 <html>
 <head>
@@ -17,45 +16,29 @@ List<UsuarioDTO> listadoUsuario=(List<UsuarioDTO>)request.getAttribute("listadoU
 </head>
 <body>
 
-<center>
 
 <fieldset>
 <legend>Listado de Usuarios</legend>
 
-<table cellpadding="2" cellspacing="2" border="2">
-<tr bgcolor="yellow" >
-<td><label>Usuario</label></td>
-<td><label>Clave</label></td>
-<td><label>Nombre</label></td>
-<td><label>Apellido</label></td>
-<td><label>Fecha Registro</label></td>
-<td><label>Estado</label></td>
-</tr>
+							<display:table 
+									name="${requestScope.listadoUsuarios}" id="UsuarioDTO"
+									uid="models" 
+									style="background-color:white" requestURI="" cellspacing="1"
+									cellpadding="5">
 
-<%
-for(int i=0; i<listadoUsuario.size(); i++){
-	
-	UsuarioDTO usuarioX=listadoUsuario.get(i);
-%>
-<tr bgcolor="skyblue" >
-<td><%=usuarioX.getUsuario()%></td>
-<td><%=usuarioX.getClave()%></td>
-<td><%=usuarioX.getNombre()%></td>
-<td><%=usuarioX.getApellido()%></td>
-<td><%=usuarioX.getFacceso()%></td>
-<td><%=usuarioX.getEstado()%></td>
-</tr>
-	
-<%	
-}
-%>
+									<display:column title="Usuario" property="usuario" />
+									<display:column title="Clave" property="clave" />
+									<display:column title="Nombre" property="nombre" />
+									<display:column title="Apellido" property="apellido" />
+									<display:column title="Fecha de Registro" property="facceso" />
+									<display:column title="Estado" property="estado" />
+								</display:table>
 
 
-</table>
 
 </fieldset>
 
-</center>
+
 
 
 </body>

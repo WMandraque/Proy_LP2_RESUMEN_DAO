@@ -48,10 +48,6 @@ public class SvRegistrarUsuario extends HttpServlet {
 		
 		int r=servicioUsuario.insertarUsuario(usuario, clave, nombre, apellido, fecha);
 		
-		for (int i = 0; i < usuario.length(); i++) {
-			
-			if(usuario.toLowerCase().charAt(i)=='u'){
-
 				if (r>0) {
 					request.setAttribute("mensaje", " Nuevo usuario agregado: "+usuario);
 					rd=request.getRequestDispatcher("listadoUsuarios");
@@ -63,16 +59,6 @@ public class SvRegistrarUsuario extends HttpServlet {
 					rd.forward(request, response);
 				}
 				
-				return;
-			}else{
-
-				request.setAttribute("mensaje", "Error con los datos ingresados");
-				rd=request.getRequestDispatcher("registrarUsuario.jsp");
-				rd.forward(request, response);
-			}
-			
-		}
-		
 		
 		
 	}catch(Exception e){
