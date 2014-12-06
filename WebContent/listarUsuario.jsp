@@ -14,6 +14,9 @@
 
 <link rel="stylesheet" href="css/tables.css" type="text/css">
 <link rel="stylesheet" href="css/estilos.css" type="text/css"> <!-- instanciamos el css sabpe MAS--->
+<link rel="stylesheet" type="text/css" href="css/displaytag.css">
+<link rel="stylesheet" type="text/css"
+media="screen"href="css/screen.css" />
 
 <title>Listado de Usuaios</title>
 </head>
@@ -26,6 +29,7 @@
 <center>
 <legend>Listado de Usuarios</legend>
 
+<c:out value=""></c:out>
 							
 								
 								
@@ -34,9 +38,11 @@
 									 id="UsuarioDTO"
 									 uid="models" 
 									 style="background-color:white" requestURI="" cellspacing="1"
-									 cellpadding="5">
+									 cellpadding="5" pagesize="2" export="true">
+									 <display:setProperty name="export.excel.filename" value="ListadoUsuarios.xls"/>
+									 <display:setProperty name="export.pdf.filename" value="ListadoUsuarios.pdf"/>
 
-									<display:column title="Usuario" property="usuario" />
+									<display:column title="Usuario" property="usuario" sortable="true" />
 									<display:column title="Clave" property="clave" />
 									<display:column title="Nombre" property="nombre" />
 									<display:column title="Apellido" property="apellido" />

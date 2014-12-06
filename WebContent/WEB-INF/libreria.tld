@@ -32,6 +32,23 @@
  <info>Combo de productos</info>
  
  </tag>
+ 
+ 
+ <tag>
+ 
+ <name>mensajeError</name>
+ <tagclass>etiquetas.MensajeError</tagclass>
+ <bodycontent>empty</bodycontent>
+ <info>Mensajes de error</info>
+ 
+<attribute> 
+  <name>mensajeError</name> 
+  <required>true</required>
+  <rtexprvalue>false</rtexprvalue>
+ </attribute>
+
+ 
+ </tag>
 
 </taglib>
 

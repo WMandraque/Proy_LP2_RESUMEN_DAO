@@ -65,9 +65,7 @@
     <servlet-name>registrarVenta</servlet-name>
     <url-pattern>/registrarVenta</url-pattern>
   </servlet-mapping>
-  
-  
-    <servlet>
+  <servlet>
     <servlet-name>listadoVentas</servlet-name>
     <servlet-class>com.proyecto.servlets.SvListadoVentas</servlet-class>
   </servlet>
@@ -75,4 +73,15 @@
     <servlet-name>listadoVentas</servlet-name>
     <url-pattern>/listadoVentas</url-pattern>
   </servlet-mapping>
+  
+  
+    <servlet>
+    <servlet-name>listadoProductos</servlet-name>
+    <servlet-class>com.proyecto.servlets.SvListadoProductos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listadoProductos</servlet-name>
+    <url-pattern>/listadoProductos</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

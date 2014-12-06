@@ -27,6 +27,11 @@
 </dl>
 
 <dl>
+<dt>Productos</dt>
+<li><a href="listadoProductos" target="central">Listar Productos</a></li>
+</dl>
+
+<dl>
 <dt>Operaciones extras</dt>
 <li><a href="listadoUsuarios" target="central">Listar Usuarios</a></li>
 </dl>
