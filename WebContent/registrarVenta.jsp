@@ -55,7 +55,9 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 
 <tr>
 <td><label>Producto</label></td>
-<td><libreria:cboProductos/>
+<!-- <td><libreria:cboProductos/> -->
+<td><input type="text" name="txtIdProducto" id="txtIdProducto"></td>
+<td><input type="button" value="Buscar" > </td>
 </tr>
 
 <tr>

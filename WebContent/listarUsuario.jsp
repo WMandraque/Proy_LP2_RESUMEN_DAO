@@ -33,7 +33,7 @@ media="screen"href="css/screen.css" />
 							
 								
 								
-				<display:table class="table"
+				<display:table
 									name="${sessionScope.listadoUsuarios}" 
 									 id="UsuarioDTO"
 									 uid="models" 

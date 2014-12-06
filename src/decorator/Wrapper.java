@@ -10,12 +10,13 @@ import com.proyecto.beans.ProductoDTO;
 public class Wrapper extends TableDecorator {
 	
 	
+	//Retorna el direccionamiento
 	public String getRecurso() {
 		
 		ProductoDTO prod = (ProductoDTO) getCurrentRowObject();
 		String cod = prod.getIdprod();
 		
-		return "<a href=\"pag.jsp?cod=" + cod + "\"> Selecciona </a>";
+		return "<a href=\"CarritoCompra.jsp?cod=" + cod + "\"> Selecciona </a>";
 		}
 
 }

@@ -14,6 +14,8 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/tables.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/displaytag.css">
+<link rel="stylesheet" type="text/css"media="screen"href="css/screen.css" />
 
 <title>Listado de Ventas</title>
 </head>

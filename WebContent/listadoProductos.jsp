@@ -15,8 +15,7 @@
 <link rel="stylesheet" href="css/tables.css" type="text/css">
 <link rel="stylesheet" href="css/estilos.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/displaytag.css">
-<link rel="stylesheet" type="text/css"
-media="screen"href="css/screen.css" />
+<link rel="stylesheet" type="text/css"media="screen"href="css/screen.css" />
 
 <title>Listado de Productos</title>
 </head>
@@ -34,7 +33,7 @@ media="screen"href="css/screen.css" />
 								
 								
 				<display:table 
-									name="${sessionScope.listadoProductos}"
+									 name="${sessionScope.listadoProductos}"
 									 id="ProductoDTO"
 									 uid="models" 
 									 style="background-color:white" requestURI="" cellspacing="1"
