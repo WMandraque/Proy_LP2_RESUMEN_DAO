@@ -2,8 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@ taglib uri="WEB-INF/libreria.tld" prefix=
-"libreria" %>
+
+<!--Se define la directiva taglib  -->
+<%@ taglib uri="WEB-INF/libreria.tld" prefix="libreria" %>
 
 <!--  uri= es el identificador de recursos, prefix=es nombe para usarlo-->
 
@@ -54,7 +55,7 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 
 <tr>
 <td><label>Producto</label></td>
-<td><libreria:comboproductos2/>
+<td><libreria:cboProductos/>
 </tr>
 
 <tr>

@@ -42,16 +42,11 @@ public class SvListadoVentas extends HttpServlet {
 			ArrayList<VentaDTO> listadoVentas=servicioVenta.listarVentas();
 			
 
-			
-			RequestDispatcher rd = null;
 			HttpSession miSesion=request.getSession();
 		
 			miSesion.setAttribute("listadoVentas", listadoVentas);
-			rd=request.getRequestDispatcher("listarVentas.jsp");
+			request.getRequestDispatcher("listarVentas.jsp").forward(request, response);
 				
-		
-			
-			rd.forward(request, response);
 			
 		} catch (Exception e) {
 			System.out.println("Error con los distapcher");

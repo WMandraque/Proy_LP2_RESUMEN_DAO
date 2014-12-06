@@ -1,12 +1,11 @@
-<%@page import="com.proyecto.beans.UsuarioDTO"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html">
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- Incluimos su pagina del jstl  -->
 <%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
-<%@ page import="com.proyecto.beans.UsuarioDTO"%>
-<%@ page import="java.util.ArrayList"%>
+
 
 
 <html>
@@ -16,7 +15,7 @@
 <link rel="stylesheet" href="css/tables.css" type="text/css">
 <link rel="stylesheet" href="css/estilos.css" type="text/css"> <!-- instanciamos el css sabpe MAS--->
 
-<title>Insert title here</title>
+<title>Listado de Usuaios</title>
 </head>
 <body>
 
@@ -24,17 +23,18 @@
 
 <fieldset>
 
-<h1>hOL</h1>
+<center>
 <legend>Listado de Usuarios</legend>
 
 							
 								
 								
-				<display:table 
-									name="${requestScope.listadoUsuarios}" id="UsuarioDTO"
-									uid="models" 
-									style="background-color:white" requestURI="" cellspacing="1"
-									cellpadding="5">
+				<display:table class="table"
+									name="${sessionScope.listadoUsuarios}" 
+									 id="UsuarioDTO"
+									 uid="models" 
+									 style="background-color:white" requestURI="" cellspacing="1"
+									 cellpadding="5">
 
 									<display:column title="Usuario" property="usuario" />
 									<display:column title="Clave" property="clave" />
@@ -42,13 +42,15 @@
 									<display:column title="Apellido" property="apellido" />
 									<display:column title="Fecha de Registro" property="facceso" />
 									<display:column title="Estado" property="estado" />
-								</display:table>			
-
-
-
+								</display:table>	
+								
+					
+							
+					<a href="registrarUsuario.jsp" target="central"> Regresar</a>				
+	
 </fieldset>
 
-
+</center>	
 
 
 </body>

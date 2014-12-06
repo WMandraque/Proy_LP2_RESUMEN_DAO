@@ -2,6 +2,7 @@
 
 <taglib>
 
+<!-- Esto es necesario, definir la version. pueso si manda error -->
 <tlibversion>1.0</tlibversion> 
  <jspversion>1.0</jspversion>
  <shortname>Ejemplos de Custom Tags</shortname>
@@ -22,6 +23,15 @@
   <bodycontent>empty</bodycontent><!-- Sin cuerpo, vacio-->
   <info>Muestra un combo2</info>
  </tag> 
+ 
+ <tag>
+ 
+ <name>cboProductos</name><!--Alias para reconocer a esa libreria -->
+ <tagclass>etiquetas.cboProductos</tagclass><!--Se define la ruta de la clase de la etiquetas -->
+ <bodycontent>empty</bodycontent><!-- Se define el cuerpo como sin cuerpo, vacio-->
+ <info>Combo de productos</info>
+ 
+ </tag>
 
 </taglib>
 

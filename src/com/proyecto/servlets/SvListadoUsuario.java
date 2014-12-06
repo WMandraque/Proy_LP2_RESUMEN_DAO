@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.proyecto.beans.PersonaDTO;
 import com.proyecto.beans.UsuarioDTO;
@@ -40,7 +41,9 @@ public class SvListadoUsuario extends HttpServlet {
 		RequestDispatcher rd=null;
 		try {
 			
-			request.setAttribute("listadoUsuarios", listadoUsuario);
+			HttpSession miSesion=request.getSession();
+			
+			miSesion.setAttribute("listadoUsuarios", listadoUsuario);
 			rd=request.getRequestDispatcher("listarUsuario.jsp");
 			rd.forward(request, response);
 
