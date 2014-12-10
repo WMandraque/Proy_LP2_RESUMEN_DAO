@@ -46,6 +46,15 @@ ALTER TABLE tb_detventas ADD foreign key (idprod) references tb_productos(idprod
 -- inserts
 INSERT INTO tb_usuario 	VALUES ('U001', '10001', 'Juan', 'Perez','2014/10/01',1);
 INSERT INTO tb_usuario 	(usuario,clave,nombre,apellido, facceso)	VALUES ('U002', '10002', 'Candy', 'Millet', curdate());
+INSERT INTO tb_usuario 	(usuario,clave,nombre,apellido, facceso)	VALUES ('U003', '10003', 'Luisa', 'Falcon', curdate());
+INSERT INTO tb_usuario 	(usuario,clave,nombre,apellido, facceso)	VALUES ('U004', '10004', 'Miguel', 'Pangus', curdate());
+INSERT INTO tb_usuario 	(usuario,clave,nombre,apellido, facceso)	VALUES ('U005', '10005', 'Kevin', 'Ramirez', curdate());
+INSERT INTO tb_usuario 	(usuario,clave,nombre,apellido, facceso)	VALUES ('U006', '10006', 'Diego', 'Mattas', curdate());
+INSERT INTO tb_usuario 	(usuario,clave,nombre,apellido, facceso)	VALUES ('U007', '10007', 'German', 'Garmendia', curdate());
+INSERT INTO tb_usuario 	(usuario,clave,nombre,apellido, facceso)	VALUES ('U008', '10008', 'David', 'Revila', curdate());
+
+
+
 
 INSERT INTO tb_ventas (fchvta, vendedor) VALUES ('2014/10/01','U002');
 INSERT INTO tb_ventas (numvta,fchvta,vendedor) VALUES (02,curdate(),'U001');
@@ -53,8 +62,15 @@ INSERT INTO tb_ventas (numvta,fchvta,vendedor) VALUES (02,curdate(),'U001');
 insert into tb_productos values ('P0001','Pizza familiar',35,1);
 insert into tb_productos values ('P0002','Pizza suprema',45,0);
 insert into tb_productos values ('P0003','Pizza personal',8,1);
-insert into tb_productos values ('P0004','Inca Kola',2.5,1);
-insert into tb_productos values ('P0005','Rolls',7.5,0);
+insert into tb_productos values ('P0004','Pizza hawaiana',8,1);
+insert into tb_productos values ('P0005','Pizza norteña',8,1);
+insert into tb_productos values ('P0006','Pizza chiclayana',8,1);
+insert into tb_productos values ('P0007','Pizza puneña',8,1);
+insert into tb_productos values ('P0008','Pizza limeña',8,1);
+insert into tb_productos values ('P0009','Pizza cuzqueña',8,1);
+insert into tb_productos values ('P0010','Pizza tarmeña',8,1);
+insert into tb_productos values ('P0011','Inca Kola',2.5,1);
+insert into tb_productos values ('P0012','Rolls',7.5,0);
 
 INSERT INTO tb_detventas VALUES (01,'P0001',1,35);
 INSERT INTO tb_detventas VALUES (02,'P0003',2,8);

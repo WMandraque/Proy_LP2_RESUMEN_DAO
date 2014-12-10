@@ -11,28 +11,24 @@
 
 %>
 
-<%
-String mensaje=(String)request.getAttribute("mensaje");
-%>
 
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Registrar Usuario</title>
 <link rel="stylesheet" href="css/estilos.css" type="text/css"> <!-- instanciamos el css -->
 </head>
 <body>
 
-<form action="registrarUsuario" method="post">
-<center>
+<form action="GestionaUsuario" method="post">
+
 <fieldset>
-
-
 <legend><label class="titulos">Registrar Usuario</label> </legend>
 
-<table>
 
+<input type="hidden" name="operacion" id="operacion" value="registrarUsuario">
+<table>
 <tr>
 <td><label>Usuario</label></td>
 <td><input type="text" name="txtUsuario" id="txtUsuario" maxlength="4" placeholder="Ingresar usuario" required="requerid"></td>
@@ -57,27 +53,52 @@ String mensaje=(String)request.getAttribute("mensaje");
 <td><label>Fecha</label></td>
 <td><input type="text" name="txtFecha" id="txtFecha" maxlength="15" value=<%=sdf.format(fecha)%> readonly="readonly"></td>
 </tr>
+</table>
+<input type="file" id="imgInp" name="txtFoto">
+<img    id="blah" src="#" alt="your image">
 
+</fieldset>
+
+
+
+
+<div>
+<table>
 <tr>
 <td><input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar"></td>
 <td><input type="reset" name="btnLimpiar" id="btnLimpiar" value="Limpiar"></td>
 </tr>
-
 </table>
+</div>
 
 
+<label class="letras">${requestScope.mensaje}</label>
 
-</fieldset>
 
-<%
-if(mensaje!=null){
-%>
-<label><%=mensaje%></label>
-<%
-}
-%>
-</center>
 </form>
+
+<script type="text/javascript">
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+
+</script>
 
 </body>
 </html>

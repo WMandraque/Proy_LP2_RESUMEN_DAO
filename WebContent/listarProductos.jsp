@@ -31,13 +31,14 @@
 
 							
 								
-								
-				<display:table 
+				<!-- en el name se puede capturar en el name defrente si es a nivel de request se pone
+				el nombre del atribute  a nivel de request!!!  -->				
+				<display:table       
 									 name="${sessionScope.listadoProductos}"
 									 id="ProductoDTO"
 									 uid="models" 
 									 style="background-color:white" requestURI="" cellspacing="1"
-									 cellpadding="5" pagesize="3" export="true" decorator="decorator.Wrapper">
+									 cellpadding="5" pagesize="5" export="true">
 									 
 							<display:setProperty name="export.excel.filename" value="ListadoProductos.xls"/>
 						    <display:setProperty name="export.pdf.filename"   value="ListadoProductos.pdf"/>
@@ -47,7 +48,6 @@
 									<display:column title="Producto" property="descripcion" sortable="true"/>
 									<display:column title="Precio" property="precio" sortable="true"/>
 									<display:column title="Estado" property="estado" sortable="true"/>
-									<display:column title="Recurso" property="recurso"/>
 								</display:table>	
 								
 					<!-- En donde esta asignado el recurso?? -->

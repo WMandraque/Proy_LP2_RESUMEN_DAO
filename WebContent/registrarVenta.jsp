@@ -3,8 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-<!--Se define la directiva taglib  -->
+<!--Se define la directiva taglib, para usar custom tag  -->
 <%@ taglib uri="WEB-INF/libreria.tld" prefix="libreria" %>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 
 <!--  uri= es el identificador de recursos, prefix=es nombe para usarlo-->
 
@@ -36,11 +37,12 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 </head>
 <body>
 
-<form action="registrarVenta" method="post" id="frmRegistrarVenta">
+<form action="GestionaVenta" method="post" id="frmRegistrarVenta">
 
 <center>
 <fieldset>
 <legend>Registrar Venta</legend>
+<input type="hidden" name="operacion" id="operacion" value="registrarVenta">
 
 <table>
 <tr>
@@ -56,8 +58,8 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 <tr>
 <td><label>Producto</label></td>
 <!-- <td><libreria:cboProductos/> -->
-<td><input type="text" name="txtIdProducto" id="txtIdProducto"></td>
-<td><input type="button" value="Buscar" > </td>
+<td><input type="text" name="txtIdProducto" id="txtIdProducto" value="${param.idProd}"></td>
+<td><input type="button" value="Buscar" onclick="location='GestionaProducto?operacion=listarProductos&tipoListado=listarProductosVenta'" > </td>
 </tr>
 
 <tr>
@@ -67,7 +69,7 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 
 <tr>
 <td><label>Precio</label></td>
-<td><input type="text" id="txtPrecio" name="txtPrecio" placeholder="Ingresar precio" required="requerid"></td>
+<td><input type="text" id="txtPrecio" name="txtPrecio" placeholder="Ingresar precio" required="requerid" value="${param.precio}"></td>
 </tr>
 
 

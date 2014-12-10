@@ -44,7 +44,7 @@
 				</table>
 				
 				
-		        ${requestScope.mensaje}
+		        <label class="letras">${requestScope.mensaje}</label>
 				
 				
 			</fieldset>

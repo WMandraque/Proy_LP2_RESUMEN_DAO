@@ -26,7 +26,7 @@ public class MySqlProductoDAO implements ProductoDAO {
 			String sql="Select*From tb_productos where estado=1";
 			ccm.prepararSentencia(con, sql, ClaseConexionMandraque.PST);
 			ResultSet rs=ccm.getPst().executeQuery();
-			
+            System.out.println("Hizo query");
 			while(rs.next()){
 				
 				listadoProductos.add(new ProductoDTO(rs.getString(1), rs.getString(2), rs.getDouble(3), rs.getBoolean(4)));

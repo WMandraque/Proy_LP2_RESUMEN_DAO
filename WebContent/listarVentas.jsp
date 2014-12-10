@@ -13,6 +13,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/estilos.css" type="text/css">
 <link rel="stylesheet" href="css/tables.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/displaytag.css">
 <link rel="stylesheet" type="text/css"media="screen"href="css/screen.css" />
@@ -29,16 +30,21 @@
 <legend>Listado de Ventas</legend>
 
 
-<display:table class="table" 
-name="sessionScope.listadoVentas" cellspacing="1">
+<display:table 
+              name="${sessionScope.listadoVentas}" 
+              cellspacing="1"
+              export="true"
+              >
+<display:setProperty name="export.pdf.filename" value="listadoVentas"></display:setProperty>
+<display:setProperty name="export.excel.filename" value="listadoVentas"></display:setProperty>
 
-<display:column title="Num Venta"      property="numvta"></display:column>
-<display:column title="Fecha de Venta" property="facceso"></display:column>
-<display:column title="Vendedor"       property="vendedor"></display:column>
+<display:column title="Num Venta"      property="numvta" sortable="true"></display:column>
+<display:column title="Fecha de Venta" property="facceso" sortable="true"></display:column>
+<display:column title="Vendedor"       property="vendedor" sortable="true"></display:column>
 
 </display:table>
 
-<a href="registrarVenta.jsp"> Regresar</a>
+<a href="registrarVenta.jsp"><label class="letras">Regresar</label></a>
 
 </fieldset>
 

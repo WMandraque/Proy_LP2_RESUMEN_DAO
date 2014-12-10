@@ -14,9 +14,11 @@ public class Wrapper extends TableDecorator {
 	public String getRecurso() {
 		
 		ProductoDTO prod = (ProductoDTO) getCurrentRowObject();
-		String cod = prod.getIdprod();
+		String idProd=prod.getIdprod();
+		double precio = prod.getPrecio();
 		
-		return "<a href=\"CarritoCompra.jsp?cod=" + cod + "\"> Selecciona </a>";
+		//Envia parametro llamado precio
+		return "<a href=\"registrarVenta.jsp?precio=" + precio + "&idProd="+idProd+"\"> Selecciona </a>";
 		}
 
 }

@@ -29,16 +29,15 @@ media="screen"href="css/screen.css" />
 <center>
 <legend>Listado de Usuarios</legend>
 
-<c:out value=""></c:out>
-							
-								
+
+														
 								
 				<display:table
 									name="${sessionScope.listadoUsuarios}" 
 									 id="UsuarioDTO"
 									 uid="models" 
 									 style="background-color:white" requestURI="" cellspacing="1"
-									 cellpadding="5" pagesize="2" export="true">
+									 cellpadding="5" pagesize="5" export="true">
 									 <display:setProperty name="export.excel.filename" value="ListadoUsuarios.xls"/>
 									 <display:setProperty name="export.pdf.filename" value="ListadoUsuarios.pdf"/>
 
@@ -51,6 +50,7 @@ media="screen"href="css/screen.css" />
 								</display:table>	
 								
 					
+					<label class="letras">${sessionScope.mensaje}</label> <br>
 							
 					<a href="registrarUsuario.jsp" target="central"> Regresar</a>				
 	

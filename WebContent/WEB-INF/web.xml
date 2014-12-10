@@ -18,38 +18,6 @@
     <url-pattern>/logueo</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>registrarUsuario</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvRegistrarUsuario</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>registrarUsuario</servlet-name>
-    <url-pattern>/registrarUsuario</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>listadoUsuarios</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvListadoUsuario</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>listadoUsuarios</servlet-name>
-    <url-pattern>/listadoUsuarios</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>eliminarUsuario</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvEliminarUsuario</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>eliminarUsuario</servlet-name>
-    <url-pattern>/eliminarUsuario</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>actualizarUsuario</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvActualizarUsuario</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>actualizarUsuario</servlet-name>
-    <url-pattern>/actualizarUsuario</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>cerrando</servlet-name>
     <servlet-class>com.proyecto.servlets.SvCerrarCesion</servlet-class>
   </servlet>
@@ -58,30 +26,30 @@
     <url-pattern>/cerrando</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>registrarVenta</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvRegistrarVenta</servlet-class>
+    <servlet-name>GestionaUsuario</servlet-name>
+    <servlet-class>com.proyecto.servlets.SvGestionaUsuario</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>registrarVenta</servlet-name>
-    <url-pattern>/registrarVenta</url-pattern>
+    <servlet-name>GestionaUsuario</servlet-name>
+    <url-pattern>/GestionaUsuario</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>listadoVentas</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvListadoVentas</servlet-class>
+    <servlet-name>GestionaProducto</servlet-name>
+    <servlet-class>com.proyecto.servlets.SvGestionaProducto</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>listadoVentas</servlet-name>
-    <url-pattern>/listadoVentas</url-pattern>
+    <servlet-name>GestionaProducto</servlet-name>
+    <url-pattern>/GestionaProducto</url-pattern>
   </servlet-mapping>
   
-  
-    <servlet>
-    <servlet-name>listadoProductos</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvListadoProductos</servlet-class>
+  <servlet>
+  <servlet-name>GestionaVenta</servlet-name>
+  <servlet-class>com.proyecto.servlets.SvGestionaVenta</servlet-class>
   </servlet>
+  
   <servlet-mapping>
-    <servlet-name>listadoProductos</servlet-name>
-    <url-pattern>/listadoProductos</url-pattern>
+  <servlet-name>GestionaVenta</servlet-name>
+  <url-pattern>/GestionaVenta</url-pattern>
   </servlet-mapping>
   
 </web-app>
