@@ -6,8 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- Incluimos su pagina del jstl  -->
 <%@ taglib uri="http://displaytag.sf.net" prefix="display"%>    <!-- Incluimos la directiva para el display tag  -->
 
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -43,10 +41,12 @@
 							<display:setProperty name="export.excel.filename" value="ListadoProductos.xls"/>
 						    <display:setProperty name="export.pdf.filename"   value="ListadoProductos.pdf"/>
 						    <display:setProperty name="export.xml.filename"   value="ListadoProductos.xml"/>
+						    
+						    
 
 									<display:column title="ID" property="idprod" sortable="true" />
 									<display:column title="Producto" property="descripcion" sortable="true"/>
-									<display:column title="Precio" property="precio" sortable="true"/>
+									<display:column title="Precio" property="precio" format="S/.{0,number, 00.00}" sortable="true"/>
 									<display:column title="Estado" property="estado" sortable="true"/>
 									<display:column title="Recurso" property="recurso"/>
 								</display:table>	
@@ -56,7 +56,6 @@
 					<a href="registrarUsuario.jsp" target="central"> Regresar</a>				
 	
 </fieldset>
-
 </center>	
 
 

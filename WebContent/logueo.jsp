@@ -4,7 +4,7 @@
 
 
 <%@ taglib uri="WEB-INF/libreria.tld" prefix="libreria" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -13,6 +13,17 @@
 <link rel="stylesheet" href="css/estilos.css" type="text/css"> <!-- instanciamos el css sabpe MAS--->
 </head>
 <body>
+
+español ingles <br><br>
+
+<!--Creamos una varianle para el contador  -->
+<c:set var="contador" scope="application" value="${contador+1}"></c:set> 
+
+<h1>Demostración de seguimiento</h1>
+<!-- Visualizar la cuenta para esta página -->
+Ud. ha visitado esta página ${contador}  
+${(contador > 1) ? " veces." : " vez."} 
+<c:if test="${contador>30}">Nose</c:if>
 
 	<form action="logueo" method="post">
 		<center>

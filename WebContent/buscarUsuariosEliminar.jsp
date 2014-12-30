@@ -43,7 +43,7 @@ media="screen"href="css/screen.css" />
 									<display:column title="Clave" property="clave" />
 									<display:column title="Nombre" property="nombre" />
 									<display:column title="Apellido" property="apellido" />
-									<display:column title="Fecha de Registro" property="facceso" />
+									<display:column title="Fecha de Registro" property="facceso" format="{0, date, dd/MM/yyyy}" />
 									<display:column title="Estado" property="estado" />
 									<display:column title="Recurso" property="recurso" />
 								</display:table>	

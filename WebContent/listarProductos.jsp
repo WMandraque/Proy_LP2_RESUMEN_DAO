@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="css/tables.css" type="text/css">
 <link rel="stylesheet" href="css/estilos.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/displaytag.css">
-<link rel="stylesheet" type="text/css"media="screen"href="css/screen.css" />
 
 <title>Listado de Productos</title>
 </head>
@@ -46,8 +45,8 @@
 
 									<display:column title="ID" property="idprod" sortable="true" />
 									<display:column title="Producto" property="descripcion" sortable="true"/>
-									<display:column title="Precio" property="precio" sortable="true"/>
-									<display:column title="Estado" property="estado" sortable="true"/>
+									<display:column title="Precio"   property="precio" sortable="true"/>
+									<display:column title="Estado"   property="estado" sortable="true"/>
 								</display:table>	
 								
 					<!-- En donde esta asignado el recurso?? -->

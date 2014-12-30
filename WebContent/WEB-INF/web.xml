@@ -11,7 +11,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>logueo</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvLogueo</servlet-class>
+    <servlet-class>servlets.SvLogueo</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>logueo</servlet-name>
@@ -19,7 +19,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>cerrando</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvCerrarCesion</servlet-class>
+    <servlet-class>servlets.SvCerrarCesion</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>cerrando</servlet-name>
@@ -27,7 +27,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>GestionaUsuario</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvGestionaUsuario</servlet-class>
+    <servlet-class>servlets.SvGestionaUsuario</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GestionaUsuario</servlet-name>
@@ -35,7 +35,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>GestionaProducto</servlet-name>
-    <servlet-class>com.proyecto.servlets.SvGestionaProducto</servlet-class>
+    <servlet-class>servlets.SvGestionaProducto</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GestionaProducto</servlet-name>
@@ -44,7 +44,7 @@
   
   <servlet>
   <servlet-name>GestionaVenta</servlet-name>
-  <servlet-class>com.proyecto.servlets.SvGestionaVenta</servlet-class>
+  <servlet-class>servlets.SvGestionaVenta</servlet-class>
   </servlet>
   
   <servlet-mapping>
