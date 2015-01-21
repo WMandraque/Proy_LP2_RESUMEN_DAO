@@ -6,6 +6,8 @@ public class UsuarioDTO extends PersonaDTO {
 	
 	private Date   facceso;
 	private int    estado;
+	private String apellido;
+
 	
 	public UsuarioDTO(String usuario, String clave, String nombre,
 			String apellido, Date facceso, int estado) {

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.proyecto.beans.UsuarioDTO;
+
 
 @WebServlet("/SvCerrarSesion")
 public class SvCerrarCesion extends HttpServlet {
@@ -31,13 +33,8 @@ public class SvCerrarCesion extends HttpServlet {
 		
 
         HttpSession miSession=request.getSession();
-		String datosSession = (String) miSession.getAttribute("datos");
-		
-		System.out.println(datosSession);
-		miSession.removeAttribute(datosSession);
 		miSession.invalidate();
 		
-		System.out.println(datosSession);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("logueo.jsp");
 

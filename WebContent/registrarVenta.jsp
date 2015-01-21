@@ -12,23 +12,7 @@
 <%
 HttpSession miSesion=request.getSession();
 String idVendedor=(String)miSesion.getAttribute("idVendedor");
-%>
-
-<script src="js/libs/jquery-1.11.1.min.js"></script>     
-<script src="js/mylibs/validCampoFranz.js"></script>
-<script type="text/javascript">
-
- $(function(){
-    //Para escribir solo numeros    
-    $('#txtPrecio').validCampoFranz('0123456789');
-    $('#txtCantidad').validCampoFranz('0123456789');
-}); 
-</script>    
-
-
-
-
- 
+%> 
  
 <html>
 <head>
@@ -37,12 +21,15 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 </head>
 <body>
 
-<form action="GestionaVenta" method="post" id="frmRegistrarVenta">
+<form action="GestionaVenta" method="post">
+<div>
 
+<img alt="" src="img/logo.png">
+</div>
 <center>
 <fieldset>
 <legend>Registrar Venta</legend>
-<input type="hidden" name="operacion" id="operacion" value="registrarVenta">
+<input type="hidden" name="operacion" id="operacion" value="agregarVenta">
 
 <table>
 <tr>
@@ -56,10 +43,16 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 </tr>
 
 <tr>
-<td><label>Producto</label></td>
+<td><label>IDProducto</label></td>
 <!-- <td><libreria:cboProductos/> -->
 <td><input type="text" name="txtIdProducto" id="txtIdProducto" value="${param.idProd}"></td>
 <td><input type="button" value="Buscar" onclick="location='GestionaProducto?operacion=listarProductos&tipoListado=listarProductosVenta'" > </td>
+</tr>
+
+<tr>
+<td><label>Descripcion</label></td>
+<!-- <td><libreria:cboProductos/> -->
+<td><input type="text" name="txtDescripcion" id="txtDescripcion" value="${param.desProd}"></td>
 </tr>
 
 <tr>
@@ -74,10 +67,14 @@ String idVendedor=(String)miSesion.getAttribute("idVendedor");
 
 
 <tr>
-<td><input type="submit" id="btnRegistrar" name="btnRegistrar" value="Registrar"></td>
-<td><input type="submit" id="btnLimpiar" name="btnLimpiar" value="Limpiar"></td>
-
+<!-- <td><input type="submit" id="btnRegistrar" name="btnRegistrar" value="Registrar"></td>
+<td><input type="submit" id="btnLimpiar" name="btnLimpiar" value="Limpiar"></td> --><tr>
+				<td><input type="submit" value="Añadir" name="Enviar"></td>
+				
+			</tr>
 </table>
+
+<jsp:include page="listaitems.jsp" />
 
 </fieldset>
 </center>

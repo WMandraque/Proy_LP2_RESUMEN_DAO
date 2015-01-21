@@ -4,16 +4,34 @@ import java.util.Date;
 
 public class VentaDTO {
 	
+	
+	//Segun el profe aqui puede ir mas datos
 	private int   numvta;   
 	private Date  facceso; 
 	private String vendedor;
 	private String idProducto;
 	private int    cantidad;
 	private double precio;
+	private String desProd;
 	
 	
 	
 	
+	public String getDesProd() {
+		return desProd;
+	}
+
+
+	public void setDesProd(String desProd) {
+		this.desProd = desProd;
+	}
+
+
+	public VentaDTO() {
+		super();
+	}
+
+
 	public VentaDTO(int numvta, Date facceso, String vendedor) {
 		super();
 		this.numvta = numvta;

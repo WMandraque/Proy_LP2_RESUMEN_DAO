@@ -37,21 +37,20 @@
 									 id="ProductoDTO"
 									 uid="models" 
 									 style="background-color:white" requestURI="" cellspacing="1"
-									 cellpadding="5" pagesize="5" export="true">
+									 cellpadding="5" pagesize="5" decorator="decorator.DWrapperProducto">
 									 
-							<display:setProperty name="export.excel.filename" value="ListadoProductos.xls"/>
-						    <display:setProperty name="export.pdf.filename"   value="ListadoProductos.pdf"/>
-						    <display:setProperty name="export.xml.filename"   value="ListadoProductos.xml"/>
+				
 
 									<display:column title="ID" property="idprod" sortable="true" />
 									<display:column title="Producto" property="descripcion" sortable="true"/>
 									<display:column title="Precio"   property="precio" sortable="true"/>
 									<display:column title="Estado"   property="estado" sortable="true"/>
+									<display:column title="Recurso" property="recurso"/>
 								</display:table>	
 								
 					<!-- En donde esta asignado el recurso?? -->
 							
-					<a href="registrarUsuario.jsp" target="central"> Regresar</a>				
+					<a href="pedido.jsp" target="central"> Regresar</a>				
 	
 </fieldset>
 

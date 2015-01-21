@@ -35,7 +35,7 @@
 
 <dl>
 <dt>Salir de esta pagina</dt>
-<li><a href="cerrando" target="_top">Cerrar sesion</a></li>
+<li><a href=Svcerrando target="_top">Cerrar sesion</a></li>
 </dl>
 
 </body>

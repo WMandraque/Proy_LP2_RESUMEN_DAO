@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	font-family:arial;
+	font-size:11px; 
+	color:#999;
+	
+}
+
+fondo {
+	background-color: #4F6799;
+	color: #fff;
+	height: 18px;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 8px;
+}
+
+
+#caja_fb_chat {
+	width: 290px;
+	border: 1px solid #999;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 40px;
+}
+
+#caja_fb_chat > h3 {
+	background-color: #4F6799;
+	color: #fff;
+	height: 18px;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 8px;
+}
+
+#chat { 
+	max-height:220px; 
+	overflow-y:auto; 
+	max-width:300px; 
+}
+
+#chat > ul > li { 
+	padding:3px;
+	clear:both;
+	padding:4px;
+	margin:10px 0px 5px 0px;
+	overflow:auto 
+}
+
+#msg_fb_chat{
+	list-style:none
+}
+
+#msg_fb_chat > li > img { 
+	width:35px;
+	float:left 
+}
+
+#msg_fb_chat > li > span {
+	width: 200px;
+	float: left;
+	margin-left: 5px;
+	margin-top: 12px;
+	margin-right: 5px;
+}
+
+#txt_chat_fb { 
+	padding:5px;
+	margin:5px; 
+	border:1px solid #999
+	;width:200px 
+}
+
+#btn_enviar {
+	padding: 6px;
+	border: solid 1px #333;
+	background-color: #4F6799;
+	color: #fff;
+	font-weight: normal;
+	font-size: 12px;
+	cursor: pointer;
+	margin: 3px;
+}
+#footer {
+	margin-top: 50px;
+	text-align: center;
+}
+#titulo_demo_fb {
+	font-size: 24px;
+	color: #069;
+}
+#sub_titulo_msge {
+	font-size: 18px;
+	color: #666;
+}
+#contenedor {
+	margin: auto;
+	padding: 40px;
+}
+#footer {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#th_fcs {
+	height: 144px;
+	width: 256px;
+	position: absolute;
+	left: 535px;
+	top: 162px;
+}
+#txt_fcs {
+	position: absolute;
+	left: 604px;
+	top: 143px;
+	font-size: 14px;
+	color: #06C;
+	font-weight: bold;
+}

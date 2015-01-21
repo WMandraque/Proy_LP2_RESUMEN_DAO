@@ -18,12 +18,12 @@
     <url-pattern>/logueo</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>cerrando</servlet-name>
+    <servlet-name>Svcerrando</servlet-name>
     <servlet-class>servlets.SvCerrarCesion</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>cerrando</servlet-name>
-    <url-pattern>/cerrando</url-pattern>
+    <servlet-name>Svcerrando</servlet-name>
+    <url-pattern>/Svcerrando</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>GestionaUsuario</servlet-name>
@@ -41,15 +41,28 @@
     <servlet-name>GestionaProducto</servlet-name>
     <url-pattern>/GestionaProducto</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  <servlet-name>GestionaVenta</servlet-name>
-  <servlet-class>servlets.SvGestionaVenta</servlet-class>
+    <servlet-name>GestionaVenta</servlet-name>
+    <servlet-class>servlets.SvGestionaVenta</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  <servlet-name>GestionaVenta</servlet-name>
-  <url-pattern>/GestionaVenta</url-pattern>
+    <servlet-name>GestionaVenta</servlet-name>
+    <url-pattern>/GestionaVenta</url-pattern>
   </servlet-mapping>
+  <listener>
+    <description>
+  sesionEsucha
+  </description>
+    <listener-class>servlets.Escucha</listener-class>
+  </listener>
+  
+  <filter>
+<filter-name>Filtro</filter-name>
+<filter-class>servlets.Filtro</filter-class>
+</filter>
+<filter-mapping>
+<filter-name>Filtro</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
   
 </web-app>

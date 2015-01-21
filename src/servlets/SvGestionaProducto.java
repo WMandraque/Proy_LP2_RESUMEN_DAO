@@ -42,6 +42,9 @@ public class SvGestionaProducto extends HttpServlet {
 		else if(operacion.equals("listarProductos")){
 			this.listarProductos(request, response);
 		}
+		else if(operacion.equals("captura")){
+			request.getRequestDispatcher("pedido.jsp").forward(request, response);
+		}
 		
 		
 		
@@ -65,19 +68,23 @@ public class SvGestionaProducto extends HttpServlet {
 			sesionX.setAttribute("listadoProductos", listadoProductos);
 			
 			//Este parametro me permitirar saber a que jsp enviar
-			if(tipoListado==null){
+			if(tipoListado==null)
+			{
 				
 				 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
 			}
-			else if(tipoListado.equals("listarProductosModificar")){
+			else if(tipoListado.equals("listarProductosModificar"))
+			{
 				
 				
 			}
-			else if(tipoListado.equals("listarProductosEliminar")){
+			else if(tipoListado.equals("listarProductosEliminar"))
+			{
 				
 				
 			}
-			else if(tipoListado.equals("listarProductosVenta")){
+			else if(tipoListado.equals("listarProductosVenta"))
+			{
 				 request.getRequestDispatcher("BuscarProductosVenta.jsp").forward(request, response);
 			}
 			
