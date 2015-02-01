@@ -1,5 +1,6 @@
 package com.proyecto.beans;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class VentaDTO {
@@ -12,11 +13,23 @@ public class VentaDTO {
 	private String idProducto;
 	private int    cantidad;
 	private double precio;
+	private double precioTotal;
 	private String desProd;
+	private ArrayList<VentaDTO> listadoPedidos;
 	
 	
 	
 	
+	public ArrayList<VentaDTO> getListadoPedidos() {
+		return listadoPedidos;
+	}
+
+
+	public void setListadoPedidos(ArrayList<VentaDTO> listadoPedidos) {
+		this.listadoPedidos = listadoPedidos;
+	}
+
+
 	public String getDesProd() {
 		return desProd;
 	}
@@ -108,6 +121,16 @@ public class VentaDTO {
 
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+
+
+	public double getPrecioTotal() {
+		return precioTotal;
+	}
+
+
+	public void setPrecioTotal(double precioTotal) {
+		this.precioTotal = precioTotal;
 	}
 	
 	

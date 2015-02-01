@@ -30,21 +30,23 @@ public class SvGestionaProducto extends HttpServlet {
 		
 	   
 		//Segun el tipo de operacion se enviara al metodo adeacuado
-		if(operacion.equals("registrarProducto")){
+		if(operacion.equals("registrarProducto"))
+		{
 			
 		}
-		else if(operacion.equals("modificarProducto")){
+		else if(operacion.equals("modificarProducto"))
+		{
 			
 		}
-		else if(operacion.equals("eliminarProducto")){
+		else if(operacion.equals("eliminarProducto"))
+		{
 			
 		}
-		else if(operacion.equals("listarProductos")){
+		else if(operacion.equals("listarProductos"))
+		{
 			this.listarProductos(request, response);
 		}
-		else if(operacion.equals("captura")){
-			request.getRequestDispatcher("pedido.jsp").forward(request, response);
-		}
+
 		
 		
 		
@@ -58,9 +60,6 @@ public class SvGestionaProducto extends HttpServlet {
 			//Capturamos el segundo parametro recibido en este servlet a nivel de request
 			
 			String tipoListado=request.getParameter("tipoListado");
-
-			
-
 			ProductoService sProducto = new ProductoService();
 			ArrayList<ProductoDTO> listadoProductos = sProducto.listadoProducto();
 			
@@ -70,8 +69,7 @@ public class SvGestionaProducto extends HttpServlet {
 			//Este parametro me permitirar saber a que jsp enviar
 			if(tipoListado==null)
 			{
-				
-				 request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
+			request.getRequestDispatcher("listarProductos.jsp").forward(request, response);
 			}
 			else if(tipoListado.equals("listarProductosModificar"))
 			{

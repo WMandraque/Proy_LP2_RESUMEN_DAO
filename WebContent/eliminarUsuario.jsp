@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -18,7 +17,6 @@
 <center>
 <fieldset>
 
-<c:set var="myUsuario" value="${requestScope.usuarioX}"></c:set>
 
 <legend>Eliminar usuarios</legend>
 <input type="hidden" name="operacion" id="operacion" value="eliminarUsuario">
@@ -26,23 +24,23 @@
 
 <tr>
 <td><label>Usuario</label></td>
-<td><input type="text" name="txtUsuario" id="txtUsuario" maxlength="4" placeholder="Ingresar usuario" required="requerid" value="${myUsuario.usuario}" disable></td>
+<td><input type="text" name="txtUsuario" id="txtUsuario" maxlength="4" placeholder="Ingresar usuario" required="requerid" value="${param.usuario}" disable></td>
 <td><input type="button" value="buscar usuario" onclick="location='GestionaUsuario?operacion=listarUsuarios&tipoListado=listarUsuariosEliminar'"></td>
 </tr>
 
 <tr>
 <td><label>Clave</label></td>
-<td><input type="password" name="txtPassword" id="txtPassword" maxlength="5" placeholder="Ingresar password"  value="${myUsuario.clave}"></td>
+<td><input type="password" name="txtPassword" id="txtPassword" maxlength="5" placeholder="Ingresar password"  value="${param.clave}"></td>
 </tr>
 
 <tr>
 <td><label>Nombre</label></td>
-<td><input type="text" name="txtNombre" id="txtNombre" maxlength="15" placeholder="Ingresar nombre"  value="${myUsuario.nombre}"></td>
+<td><input type="text" name="txtNombre" id="txtNombre" maxlength="15" placeholder="Ingresar nombre"  value="${param.nombre}"></td>
 </tr>
 
 <tr>
 <td><label>Apellido</label></td>
-<td><input type="text" name="txtApellido" id="txtApellido" maxlength="15" placeholder="Ingresar apellido"  value="${myUsuario.apellido}"></td>
+<td><input type="text" name="txtApellido" id="txtApellido" maxlength="15" placeholder="Ingresar apellido"  value="${param.apellido}"></td>
 </tr>
 
 

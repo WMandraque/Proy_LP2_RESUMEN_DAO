@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-<%@ taglib uri="WEB-INF/libreria.tld" prefix="libreria" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="WEB-INF/libreria.tld" prefix="libreria" %> <!--  para los combos -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!--  para usar lenguaje de experesiones -->
 
 <html>
 <head>
@@ -16,16 +15,19 @@
 
 español ingles <br><br>
 
-<!--Creamos una varianle para el contador  -->
+<!--Creamos una variable para el contador, cada ves que ejecuta suma mas 1  -->
 <c:set var="contador" scope="application" value="${contador+1}"></c:set> 
 
 <h1>Demostración de seguimiento</h1>
-<!-- Visualizar la cuenta para esta página -->
+<!-- imprimimos la variable contador-->
 Ud. ha visitado esta página ${contador}  
-${(contador > 1) ? " veces." : " vez."} 
-<c:if test="${contador>30}">Nose</c:if>
 
-	<form action="logueo" method="post">
+<!-- Condicion ternaria-->
+${(contador > 1) ? " veces." : " vez."} 
+<c:if test="${contador>30}">Supero el limite de 30</c:if>
+
+	<form action="GestionaUsuario" method="post">
+	<input type="hidden" name="operacion" value="validarUsuario">
 		<center>
 			<fieldset>
 				<legend><label class="titulos">Ingresar datos</label> </legend>

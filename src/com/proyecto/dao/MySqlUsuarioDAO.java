@@ -1,20 +1,14 @@
 package com.proyecto.dao;
 
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import utils.MySQLConexion;
 import utils.ClaseConexionMandraque;
-
-import com.proyecto.beans.PersonaDTO;
 import com.proyecto.beans.UsuarioDTO;
 import com.proyecto.interfaces.UsuarioDAO;
 
@@ -66,10 +60,7 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		try {
 			
 			con=ClaseConexionMandraque.getConexion();
-	
-		
 			con.setAutoCommit(false);
-			
 			fechaD=sdf1.parse(fecha);
 			String sql="{call usp_insertarUsuario(?, ?, ?, ?, ?)}";
 			ccm.prepararSentencia(con, sql, ClaseConexionMandraque.CST);

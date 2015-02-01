@@ -1,6 +1,5 @@
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"   pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html">
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- Incluimos su pagina del jstl  -->
@@ -18,15 +17,15 @@
 <link rel="stylesheet" type="text/css"
 media="screen"href="css/screen.css" />
 
-<title>Listado de Usuaios</title>
+<title>Listado de Usuarios</title>
 </head>
 <body>
-
+<center>
 
 
 <fieldset>
 
-<center>
+
 <legend>Listado de Usuarios</legend>
 
 
@@ -47,7 +46,7 @@ media="screen"href="css/screen.css" />
 									<display:column title="Apellido" property="apellido" />
 									<display:column title="Fecha de Registro" property="facceso" format="{0, date, dd/MM/yyyy}" />
 									<display:column title="Estado" property="estado" />
-								</display:table>	
+				</display:table>	
 								
 					
 					<label class="letras">${sessionScope.mensaje}</label> <br>
@@ -57,7 +56,5 @@ media="screen"href="css/screen.css" />
 </fieldset>
 
 </center>	
-
-
 </body>
 </html>

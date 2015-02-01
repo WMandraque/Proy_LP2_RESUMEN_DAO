@@ -20,7 +20,10 @@ import com.proyecto.service.VentaService;
 @WebServlet("/SvGestionaVenta")
 public class SvGestionaVenta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
+	VentaService servicioVenta=new VentaService();
+	SessionListener sl=new SessionListener();
+
   
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -29,12 +32,10 @@ public class SvGestionaVenta extends HttpServlet {
 		
 		if(operacion.equals("registrarVenta"))
 		{
-			
 			this.registrarVenta(request, response);	
 		}
 		else if(operacion.equals("modificarVenta"))
 		{
-			
 			this.modificarVenta(request, response);
 		}
 		else if(operacion.equals("eliminarVenta"))
@@ -43,7 +44,6 @@ public class SvGestionaVenta extends HttpServlet {
 		}
 		else if(operacion.endsWith("listarVentas"))
 		{
-			
 			this.listarVentas(request, response);
 		}
 		else if(operacion.equals("agregarVenta"))
@@ -63,25 +63,23 @@ public class SvGestionaVenta extends HttpServlet {
 		try 
 		{
 			
-			System.out.println("Llego al eliminar!!!!");
 			
 
 			String idProd=request.getParameter("idProducto");
-			System.out.println("Capturando producto a eliminnar: "+idProd);
 			HttpSession miSesion=request.getSession();
 			
-			ArrayList<VentaDTO> listadoVentas=(ArrayList<VentaDTO>)miSesion.getAttribute("carrito");
+			ArrayList<VentaDTO> listadoPedidos=(ArrayList<VentaDTO>)miSesion.getAttribute("s_listadoPedidos");
 			
-			for (int i = 0; i < listadoVentas.size(); i++) 
+			for (int i = 0; i < listadoPedidos.size(); i++) 
 			{
 			
-				if (listadoVentas.get(i).getIdProducto().equals(idProd)) 
+				if (listadoPedidos.get(i).getIdProducto().equals(idProd)) 
 				{
-					listadoVentas.remove(i);
+					listadoPedidos.remove(i);
 				}
 			}
 			
-			miSesion.setAttribute("carrito", listadoVentas);
+			miSesion.setAttribute("s_listadoPedidos", listadoPedidos);
 			request.getRequestDispatcher("registrarVenta.jsp").forward(request, response);
 			
 			
@@ -110,14 +108,21 @@ public class SvGestionaVenta extends HttpServlet {
 			nuevaVenta.setDesProd(desProd);
 			nuevaVenta.setCantidad(cantidad);
 			nuevaVenta.setPrecio(precio);
-			
+			nuevaVenta.setPrecioTotal(precio*cantidad);
 			HttpSession miSesion=request.getSession();
 			
 			
 			
-			ArrayList<VentaDTO> listadoVentas=(ArrayList<VentaDTO>)miSesion.getAttribute("carrito");
-			listadoVentas.add(nuevaVenta);
-			miSesion.setAttribute("carrito", listadoVentas);
+			ArrayList<VentaDTO> listadoPedidos=(ArrayList<VentaDTO>)miSesion.getAttribute("s_listadoPedidos");
+			listadoPedidos.add(nuevaVenta);
+			double precioTotal = 0;
+			for (int i = 0; i < listadoPedidos.size(); i++)
+			{
+				precioTotal+=listadoPedidos.get(i).getPrecioTotal();
+			}
+			
+			miSesion.setAttribute("s_listadoPedidos", listadoPedidos);
+			miSesion.setAttribute("s_precioTotal", precioTotal);
 			request.getRequestDispatcher("registrarVenta.jsp").forward(request, response);
 			
 		} catch (Exception e) {
@@ -131,38 +136,38 @@ public class SvGestionaVenta extends HttpServlet {
 	private void registrarVenta(HttpServletRequest request, HttpServletResponse response) {
 		
 		
-        try {
+        try 
+        {
         	
 			//Capturando datos para registrar venta
-			
 			String idVendedor=request.getParameter("txtIdVendedor");
-			String idProducto=request.getParameter("txtIdProducto");
-			int    cantidad=Integer.parseInt(request.getParameter("txtCantidad"));
-			double precio=Double.parseDouble(request.getParameter("txtPrecio"));
+			System.out.println("Vendedor: "+idVendedor);
+
+			HttpSession miSesion=request.getSession();
+			ArrayList<VentaDTO> listadoPedidos=(ArrayList<VentaDTO>)miSesion.getAttribute("s_listadoPedidos");
 			
+			VentaDTO ventaX=new VentaDTO();
+			ventaX.setVendedor(idVendedor);
+			ventaX.setListadoPedidos(listadoPedidos);
 			
-			VentaDTO ventaX=new VentaDTO(idVendedor, idProducto, cantidad, precio);
-			
-			VentaService servicioVenta=new VentaService();
-			
-	
 			int r=servicioVenta.registrarVenta(ventaX);
 			
-			HttpSession miSesion=request.getSession();
-			
-			if(r>0){
-				
+			if(r>0)
+			{	
 				this.listarVentas(request, response);
-		
-			}else {
-				
-				miSesion.setAttribute("Mensaje", "Error al registrar ventas" );
+			}
+			else 
+			{	
+				request.setAttribute("Mensaje", "Error al registrar ventas" );
 				request.getRequestDispatcher("registrarVenta.jsp").forward(request, response);
-				
 			}
 			
+			listadoPedidos.clear();
+			miSesion.setAttribute("s_listadoPedidos", listadoPedidos);
 			
-		} catch (Exception e) {
+		} 
+        catch (Exception e) 
+		{
 			System.out.println("Error al registrarVenta: "+e);
 		}
 

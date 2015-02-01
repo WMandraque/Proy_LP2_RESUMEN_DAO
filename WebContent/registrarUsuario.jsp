@@ -1,15 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@ page import="java.util.Date"%>    
-<%@ page import="java.text.SimpleDateFormat"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<% 
-   Date fecha=new Date();
-   SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyy");
-
-%>
 
 
 
@@ -22,12 +16,14 @@
 <body>
 
 <form action="GestionaUsuario" method="post">
-
+<input type="hidden" name="operacion" id="operacion" value="registrarUsuario">
 <fieldset>
+<center>
+
+
 <legend><label class="titulos">Registrar Usuario</label> </legend>
 
 
-<input type="hidden" name="operacion" id="operacion" value="registrarUsuario">
 <table>
 <tr>
 <td><label>Usuario</label></td>
@@ -51,54 +47,26 @@
 
 <tr>
 <td><label>Fecha</label></td>
-<td><input type="text" name="txtFecha" id="txtFecha" maxlength="15" value=<%=sdf.format(fecha)%> readonly="readonly"></td>
+<c:set var="fecha" value="<%=new java.util.Date()%>" />
+<td><input type="text" name="txtFecha" id="txtFecha" maxlength="15" value=<fmt:formatDate pattern="dd/MM/yyyy" value="${fecha}"/> readonly="readonly"></td>
 </tr>
 </table>
-<input type="file" id="imgInp" name="txtFoto">
-<img    id="blah" src="#" alt="your image">
-
-</fieldset>
 
 
 
-
-<div>
 <table>
 <tr>
 <td><input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar"></td>
 <td><input type="reset" name="btnLimpiar" id="btnLimpiar" value="Limpiar"></td>
 </tr>
 </table>
-</div>
+
 
 
 <label class="letras">${requestScope.mensaje}</label>
 
-
+</center>
+</fieldset>
 </form>
-
-<script type="text/javascript">
-
-$("#imgInp").change(function(){
-    readURL(this);
-});
-
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        
-        reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
-        }
-        
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-
-
-</script>
-
 </body>
 </html>

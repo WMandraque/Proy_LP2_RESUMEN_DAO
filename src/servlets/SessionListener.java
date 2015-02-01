@@ -25,18 +25,18 @@ public class SessionListener implements HttpSessionListener {
 
     //Se genere una variable local un arrayList
     public void sessionCreated(HttpSessionEvent arg0) {
-    	ArrayList<VentaDTO> listaVentas=new ArrayList<VentaDTO>();
+    	
+    	ArrayList<VentaDTO> listadoPedidos=new ArrayList<VentaDTO>();
     	// -- es la variable global
     	
     	//Obtenemos la session
-    	arg0.getSession().setAttribute("carrito", listaVentas);
-        
+    	arg0.getSession().setAttribute("s_listadoPedidos", listadoPedidos);        
     }
 
 	
     public void sessionDestroyed(HttpSessionEvent arg0) 
     {
-      arg0.getSession().removeAttribute("carrito");  
+      arg0.getSession().removeAttribute("s_listadoPedidos");  
     }
 	
 }

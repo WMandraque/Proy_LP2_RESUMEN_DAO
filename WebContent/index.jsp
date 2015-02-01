@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="pedido.jsp"></jsp:forward>
+	<jsp:forward page="logueo.jsp"></jsp:forward>
 </body>
 </html>

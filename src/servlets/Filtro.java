@@ -22,44 +22,39 @@ import com.proyecto.interfaces.UsuarioDAO;
 @WebFilter("/Filtro")
 public class Filtro implements Filter {
 
-	/**
-	 * Default constructor.
-	 */
-	public Filtro() {
-		// TODO Auto-generated constructor stub
+
+	public Filtro() 
+	{
 	}
 
-	/**
-	 * @see Filter#destroy()
-	 */
+
 	public void destroy() {
-		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		System.out.println("evaluando filtro");
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException 
+	{
+		
 
 		//Cateamos para capturar toda la info
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
-		UsuarioDTO usu=(UsuarioDTO) req.getSession().getAttribute("datos");		
-		if (usu==null) {
-				req.getRequestDispatcher("logueo.jsp").forward(req, res);
+		UsuarioDTO usuario=(UsuarioDTO) req.getSession().getAttribute("s_usuario");		
+		
+		if (usuario==null)
+		{
+				req.getRequestDispatcher("logueo.jsp");
 		}
+
 		chain.doFilter(request, response);
-		System.out.println("continua!!!");
+		
+	
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+
+	public void init(FilterConfig fConfig) throws ServletException 
+	{
 	}
 
 }

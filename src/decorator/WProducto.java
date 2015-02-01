@@ -7,11 +7,11 @@ import com.proyecto.beans.ProductoDTO;
 
 
 //Esta clase permite capturar el objeto de la tabla y retornarlo a una pagina a usar
-public class Wrapper extends TableDecorator {
+public class WProducto extends TableDecorator {
 	
 	
 	//Retorna el direccionamiento
-	public String getRecurso() {
+	public String getAgregarCarrito() {
 		
 		ProductoDTO prod = (ProductoDTO) getCurrentRowObject();
 		int posicion = (int) getListIndex();//Alternativa para eliminar

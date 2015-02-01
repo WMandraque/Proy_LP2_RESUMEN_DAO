@@ -36,11 +36,11 @@
 									 id="ProductoDTO"
 									 uid="models" 
 									 style="background-color:white" requestURI="" cellspacing="1"
-									 cellpadding="5" pagesize="3" export="true" decorator="decorator.Wrapper">
-									 
+									 cellpadding="5" pagesize="10"  decorator="decorator.WProducto">
+<%-- 									 
 							<display:setProperty name="export.excel.filename" value="ListadoProductos.xls"/>
 						    <display:setProperty name="export.pdf.filename"   value="ListadoProductos.pdf"/>
-						    <display:setProperty name="export.xml.filename"   value="ListadoProductos.xml"/>
+						    <display:setProperty name="export.xml.filename"   value="ListadoProductos.xml"/> --%>
 						    
 						    
 
@@ -48,13 +48,13 @@
 									<display:column title="Producto" property="descripcion" sortable="true"/>
 									<display:column title="Precio" property="precio" format="S/.{0,number, 00.00}" sortable="true"/>
 									<display:column title="Estado" property="estado" sortable="true"/>
-									<display:column title="Recurso" property="recurso"/>
+									<display:column title="Seleccionar" property="agregarCarrito"/>
 								</display:table>	
 								
 					<!-- En donde esta asignado el recurso?? -->
 							
-					<a href="registrarUsuario.jsp" target="central"> Regresar</a>				
-	
+<!-- 					<a href="registrarUsuario.jsp" target="central"> Regresar</a>				
+ -->	
 </fieldset>
 </center>	
 

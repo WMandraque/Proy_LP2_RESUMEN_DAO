@@ -19,7 +19,6 @@
 
 <legend><label class="titulos">Actualizar Usuario</label> </legend>
 
-<c:set var="myUsuario" value="${requestScope.usuarioX}"></c:set>
 
 
 <input type="hidden" name="operacion" id="operacion" value="modificarUsuario">
@@ -27,23 +26,23 @@
 
 <tr>
 <td><label>Usuario</label></td>
-<td><input type="text" name="txtUsuario" id="txtUsuario" maxlength="4" placeholder="Ingresar usuario" required="requerid" value="${myUsuario.usuario}"></td>
+<td><input type="text" name="txtUsuario" id="txtUsuario" maxlength="4" placeholder="Ingresar usuario" required="requerid" value="${param.idUsuario}"></td>
 <td><input type="button" onclick="location='GestionaUsuario?operacion=listarUsuarios&tipoListado=listarUsuariosModificar'" value="Buscar Usuario">
 </tr>
 
 <tr>
 <td><label>Clave</label></td>
-<td><input type="password" name="txtPassword" id="txtPassword" maxlength="5" placeholder="Ingresar password" required="requerid" value="${myUsuario.clave}"></td>
+<td><input type="password" name="txtPassword" id="txtPassword" maxlength="5" placeholder="Ingresar password" required="requerid" value="${param.clave}"></td>
 </tr>
 
 <tr>
 <td><label>Nombre</label></td>
-<td><input type="text" name="txtNombre" id="txtNombre" maxlength="15" placeholder="Ingresar nombre" required="requerid" value="${myUsuario.nombre}"></td>
+<td><input type="text" name="txtNombre" id="txtNombre" maxlength="15" placeholder="Ingresar nombre" required="requerid" value="${param.nombre}"></td>
 </tr>
 
 <tr>
 <td><label>Apellido</label></td>
-<td><input type="text" name="txtApellido" id="txtApellido" maxlength="15" placeholder="Ingresar apellido" required="requerid" value="${myUsuario.apellido}"></td>
+<td><input type="text" name="txtApellido" id="txtApellido" maxlength="15" placeholder="Ingresar apellido" required="requerid" value="${param.apellido}"></td>
 </tr>
 
 
